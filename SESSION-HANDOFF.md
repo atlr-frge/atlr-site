@@ -20,7 +20,7 @@ Updated 30 Oct 2026, late afternoon, the day of the TiECon Canada 2026 keynote.
 - **HTTPS:** live. GitHub's certificate stayed `null` for 45 minutes after the DNS change; removing and re-adding the custom domain through the API (`PUT .../pages` with `{"cname":null}` then `{"cname":"atlr.pro"}`) made GitHub re-check DNS and the certificate was approved within a minute. `https_enforced` was then set by hand at about 16:50 ET and https://atlr.pro verified on all four edge addresses with a CN=atlr.pro certificate; http://atlr.pro and www.atlr.pro redirect. GitHub committed "Delete CNAME" / "Create CNAME" on main during that nudge; local main was rebased on top, so pull before pushing from another checkout.
 - **What visitors see now:** the Intro v7 deck as a one-page temp site (Michael's call). Fixes applied from the deck source: headshots copied into the repo, the two 19 MB swarm PNGs cut to 2048px WebP, placeholder client logo strip removed, em dashes removed, fold dev marker hidden, Materiality in the nav, hello@/Materiality/LinkedIn in the footer, canonical/OG/JSON-LD added.
 - **Full site:** built and staged. Six pages: / (deck spine refreshed, plus five controls, selected work, team, Materiality), /work/ (seventeen systems with build states and a state key, Conformer and Conduit, controls), /method/ (Sprint, Learn/Build/Prove/Stay, how it thinks), /team/ (long bios), /materiality/ (episodes 01 to 04 with LinkedIn links, the word, how it is made, disclaimer), /contact/ (Sprint-first, mailto), 404.
-- **Copy gate:** all six pages pass slop-gate.py; the only hit is the kill-list word "bespoke", which is the brand positioning line and is the accepted exception. A fresh doc-critic agent graded the copy the same afternoon; apply any rewrites it returned before the flip.
+- **Copy gate:** all six pages pass slop-gate.py; the only hit is the kill-list word "bespoke", which is the brand positioning line and is the accepted exception. Two fresh doc-critic rounds ran (both returned FIX; the second's remaining points are either applied or are brand-headline calls listed below). A read-only site-qa pass found no P0; its P1s are applied (menu from 900px, dated No. 04 label, matched state labels, 404 og:url, holding noindex, llms Mashup link, Materiality share card as a 1200x630 JPG).
 - **Rendering QA:** desktop (1440) checked page by page in Chrome. Phone width is checked through `_mobile.html` (an iframe harness in the preview build) because the Chrome extension would not shrink the window below desktop width. The mobile menu needed a fix: the nav's backdrop-filter turned a fixed overlay into a bar-height panel, so the panel is now absolutely positioned under the bar with the toggle above it.
 
 ## Source material and what the site may and may not say
@@ -33,10 +33,12 @@ Updated 30 Oct 2026, late afternoon, the day of the TiECon Canada 2026 keynote.
 ## Open decisions for Sean and Michael
 
 1. Client naming on /work/ and the home page (see above).
-2. Sean's No Dress Rehearsal credit: the v7 deck says executive produced, the Song deck says Animation Director; the site says both.
-3. The deck's "vs. consultancies / platforms / automation / dev shops" table is kept on the home page; the taste rules would drop it.
+2. Sean's No Dress Rehearsal credit: the v7 deck says executive produced, the Song deck says Animation Director; the site says both, "released on Prime Video".
+3. Deck headlines the critics questioned and I kept as Michael's language: "Five people doing fifty people's work" (the body now carries the two-and-a-half-weeks warrant), "Companies are building Frankensteins", "built like it was made in-house, because it was", "Polymaths who have shipped this before". The deck's they/we comparison table was replaced by a paragraph plus two cards; easy to restore from git (commit 8cf7dae has it).
 4. Contact is mailto only. A FormSubmit form (as on aiimaginelabs) needs Michael to click the activation email for hello@atlr.pro.
 5. Temp-site bio text still says "Built and exited 7 companies" and "MIT" (unchanged canonical deck copy) until the full site replaces it.
+6. Claims the critics asked to verify before the flip: "all 1,087" FINTRAC rules; "named by Forbes one of the 100 most-followed CMOs" (aiimaginelabs uses this form); CES and SXSW as stages; Canaccord Genuity named as the series partner (already public on aiimaginelabs and Al's posts); Design Exchange Athena still in use; Sean's awards and figures (from his own Oct 2026 deck).
+7. On 3 Nov: swap the No. 04 card on /materiality/ from the dashed "next" card to a linked episode.
 
 ## Process (repeatable)
 
@@ -58,7 +60,6 @@ Token dance: `TOKEN=$(gh auth token); git push "https://x-access-token:${TOKEN}@
 
 ## Next
 
-- Read the critic's report, apply rewrites, rebuild staging, re-run the gate.
 - WhatsApp note to Sean with the staging URL and the five open decisions (sean-note skill).
 - After sign-off: the flip (above), then `site-qa` on https://atlr.pro, then update `~/.claude/CLAUDE.md` canonical table (live column) and the `atelier-site` memory.
 - Later: OG image with the wordmark (today's og-default.jpg is a brand-safe crop with no text), a contact form, and the aiimaginelabs links to the Atelier deck that should now point at https://atlr.pro (noted in the aiimaginelabs handoff).
