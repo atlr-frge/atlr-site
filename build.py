@@ -95,6 +95,8 @@ def render(body, meta):
     head_extra = ''
     if meta.get('noindex') or args.staging:
         head_extra += '<meta name="robots" content="noindex">\n'
+    for pl in meta.get('preload', []):
+        head_extra += '<link rel="preload" as="image" href="%s%s" fetchpriority="high"%s>\n' % (BASE, pl['href'], (' media="%s"' % pl['media']) if pl.get('media') else '')
     if meta.get('jsonld', True):
         head_extra += '<script type="application/ld+json">%s</script>\n' % json.dumps(graph_for(meta, canonical), ensure_ascii=False, separators=(',', ':'))
     out = layout
