@@ -110,7 +110,7 @@ def render(body, meta):
         out = out.replace('{{ACTIVE_%s}}' % nav, 'aria-current="page"' if meta.get('nav') == nav else '')
     out = out.replace('{{ORIGIN}}', ORIGIN).replace('{{BASE}}', BASE).replace('{{V}}', V).replace('{{YEAR}}', YEAR)
     if meta.get('no_canonical'):
-        out = out.replace('<link rel="canonical" href="">\n', '')
+        out = out.replace('<link rel="canonical" href="">\n', '').replace('<meta property="og:url" content="">\n', '')
     return out
 
 def write(rel, content):
@@ -192,7 +192,7 @@ Atelier Superintelligence is a Toronto workshop that builds agentic systems insi
 ## Facts
 - Domains of work: financial crime, network television, music, film, a projection venue, a weekly series on AI.
 - Five controls on every build: validation before use, human approval, an audit record, release control, data protection.
-- Michael Chase hosts Materiality and writes the Monday Morning Mashup at AI Imagine Labs ({MATERIALITY_URL}).
+- Michael Chase hosts Materiality ({MATERIALITY_URL}) and writes the Monday Morning Mashup (https://www.aiimaginelabs.com/blog/).
 """
 write('/llms.txt', llms)
 print('built %d pages -> %s (base=%r origin=%s staging=%s v=%s)' % (len(pages), OUT, BASE, ORIGIN, args.staging, V))
