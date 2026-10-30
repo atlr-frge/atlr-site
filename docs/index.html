@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atelier Superintelligence</title>
-<meta name="description" content="Atelier Superintelligence builds bespoke agentic systems. Deep context. Real integrations. Results that compound.">
+<title>Atelier Superintelligence | Bespoke Agentic Systems</title>
 <link rel="canonical" href="https://atlr.pro/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Atelier Superintelligence">
@@ -13,12 +12,19 @@
 <meta property="og:site_name" content="Atelier Superintelligence">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0A'/%3E%3Cpath d='M19 5 L11 27' stroke='%23E85D04' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="description" content="Atelier designs and operates autonomous infrastructure fitted to your organization. Bespoke agentic systems. Deep context. Real integrations. Results that compound.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
 :root {
   --bg:           #0A0A0A;
+  --bg-card:      #111111;
+  --bg-lifted:    #161616;
   --ember:        #E85D04;
   --ember-glow:   #F48C06;
   --ember-dim:    rgba(232,93,4,0.09);
@@ -27,170 +33,1220 @@
   --text-sec:     #A0A0A0;
   --text-dim:     #555555;
   --border:       #222222;
+  --seam:         #3a3a3a;
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', 'Courier New', monospace;
-  --pad-x:        clamp(1.25rem, 5vw, 5rem);
+  --max-w:        1080px;
+  --pad-x:        clamp(1.5rem, 5vw, 5rem);
 }
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 17px; text-rendering: optimizeLegibility; }
+html { font-size: 17px; scroll-behavior: smooth; text-rendering: optimizeLegibility; overflow-x: hidden; }
 body {
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex; flex-direction: column;
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  position: relative;
-}
-body::before {
-  content: "";
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background:
-    radial-gradient(ellipse 70% 55% at 18% 110%, rgba(232,93,4,0.16), transparent 65%),
-    radial-gradient(ellipse 45% 40% at 95% -10%, rgba(244,140,6,0.07), transparent 70%);
 }
 a { color: inherit; text-decoration: none; }
 
+/* ============================================
+   NAV
+   ============================================ */
 .nav {
-  position: relative; z-index: 1;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 1.4rem var(--pad-x);
+  padding: 1rem var(--pad-x);
+  background: transparent;
+  transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
 }
-.wordmark {
+.nav.scrolled {
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
   font-family: var(--font-mono);
   font-size: 0.62rem; font-weight: 500;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--text);
 }
-.wordmark span { color: var(--ember); }
-.nav-mail {
+.nav-right { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.82rem; font-weight: 400;
+  color: var(--text-sec); transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  display: inline-flex; align-items: center;
+  padding: 0.5rem 1.25rem;
+  background: var(--ember); color: #fff;
+  font-size: 0.78rem; font-weight: 600;
+  border-radius: 4px; letter-spacing: 0.01em;
+  transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--ember-glow); transform: translateY(-1px); }
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.label {
   font-family: var(--font-mono);
-  font-size: 0.68rem; letter-spacing: 0.06em;
-  color: var(--text-sec);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 2px;
+  font-size: 0.62rem; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ember); margin-bottom: 0.75rem; display: block;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 300; line-height: 1.08;
+  letter-spacing: -0.02em; color: var(--text);
+}
+.section-title em { font-style: italic; color: var(--ember); }
+.section-sub {
+  font-size: 1.05rem; font-weight: 400;
+  color: var(--text-sec); line-height: 1.7;
+  max-width: 640px; margin-top: 1rem;
+}
+.body-text {
+  font-size: 0.95rem;
+  color: var(--text-sec); line-height: 1.75; max-width: 540px;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.section-dark  { background: var(--bg); padding: 6rem var(--pad-x); }
+.section-lifted { background: var(--bg-lifted); padding: 6rem var(--pad-x);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.inner { max-width: var(--max-w); margin: 0 auto; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+
+/* ============================================
+   HERO (v4 narrative, v6 design)
+   ============================================ */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 8rem var(--pad-x) 6rem;
+  background: var(--bg);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(232,93,4,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: var(--max-w); width: 100%; margin: 0 auto;
+  position: relative; z-index: 1;
+  max-width: 680px;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; font-weight: 400;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ember); margin-bottom: 1.25rem; display: block;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.8rem, 8.5vw, 7.6rem);
+  font-weight: 300; line-height: 0.97;
+  letter-spacing: -0.03em; color: var(--text);
+  margin-bottom: 2rem;
+}
+.hero-title em { font-style: italic; color: var(--ember); }
+.hero-rule {
+  width: 48px; height: 1px;
+  background: var(--ember); margin-bottom: 2rem;
+}
+.hero-sub {
+  font-size: 1.08rem; color: #ffffff;
+  line-height: 1.8; max-width: 560px;
+  margin-bottom: 2.5rem;
+}
+.hero-sub strong { color: #ffffff; font-weight: 600; }
+.hero-ctas {
+  display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex; align-items: center;
+  padding: 0.8rem 1.9rem;
+  background: var(--ember); color: #fff;
+  font-size: 0.88rem; font-weight: 600;
+  border-radius: 4px; letter-spacing: 0.01em;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--ember-glow); transform: translateY(-2px); }
+.btn-ghost {
+  display: inline-flex; align-items: center;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid var(--seam); color: var(--text-sec);
+  font-size: 0.88rem; font-weight: 400; border-radius: 4px;
   transition: color 0.2s, border-color 0.2s;
 }
-.nav-mail:hover { color: var(--text); border-color: var(--ember); }
+.btn-ghost:hover { color: var(--text); border-color: var(--text-sec); }
 
-main {
-  position: relative; z-index: 1;
-  flex: 1;
-  display: flex; flex-direction: column; justify-content: center;
-  padding: clamp(2rem, 7vh, 5rem) var(--pad-x) clamp(2rem, 6vh, 4rem);
-  max-width: 1080px; width: 100%;
-  margin: 0 auto;
+/* ============================================
+   FOLD RULE
+   ============================================ */
+.fold-rule {
+  position: relative; height: 0;
+  border-top: 1px dashed var(--seam); margin: 0;
 }
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.66rem; font-weight: 400;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--ember);
-  margin-bottom: 2.2rem;
+.fold-rule::after {
+  content: '- fold -'; display: none;
+  position: absolute; right: var(--pad-x); top: -0.62rem;
+  font-family: var(--font-mono); font-size: 0.56rem;
+  letter-spacing: 0.12em; color: var(--text-dim);
+  background: var(--bg); padding: 0 0.4rem;
 }
-h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5.2vw, 4.8rem);
-  font-weight: 300; line-height: 1.02;
-  letter-spacing: -0.025em;
-  color: var(--text);
-  max-width: 19ch;
-}
-h1 em { font-style: italic; color: var(--ember); }
-.rule { width: 48px; height: 1px; background: var(--ember); margin: 2rem 0; }
-.lede {
-  font-size: 1.08rem; line-height: 1.6; font-weight: 300;
-  color: var(--text-sec);
-  max-width: 48ch;
-}
-.lede strong { color: var(--text); font-weight: 500; }
+.fold-rule.on-lifted::after { background: var(--bg-lifted); }
 
-.links {
-  display: flex; flex-wrap: wrap; gap: 0.9rem 2.6rem;
-  margin-top: 3rem;
-  list-style: none;
-}
-.links a {
-  display: inline-flex; align-items: baseline; gap: 0.55rem;
-  font-size: 0.92rem; font-weight: 400;
-  color: var(--text);
-  padding-bottom: 3px;
-  border-bottom: 1px solid var(--border);
-  transition: border-color 0.2s, color 0.2s;
-}
-.links a:hover { border-color: var(--ember); }
-.links a .arrow { color: var(--ember); font-family: var(--font-mono); font-size: 0.8em; }
-.links a .where {
-  font-family: var(--font-mono); font-size: 0.66rem;
-  letter-spacing: 0.08em; color: var(--text-dim);
-}
-
-footer {
-  position: relative; z-index: 1;
-  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem 2rem;
-  padding: 1.4rem var(--pad-x) 1.8rem;
+/* ============================================
+   PAIN SECTION - FRANKENSTEIN
+   ============================================ */
+.pain-section {
+  background: var(--bg-lifted);
+  padding: 7rem var(--pad-x);
   border-top: 1px solid var(--border);
-  font-family: var(--font-mono);
-  font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
 }
-footer a:hover { color: var(--text-sec); }
+.pain-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: start;
+}
+.pain-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 300; line-height: 1.08;
+  letter-spacing: -0.02em; color: var(--text);
+  margin-top: 0.75rem; margin-bottom: 1.5rem;
+}
+.pain-title em { font-style: italic; color: var(--ember); }
 
-@media (max-width: 640px) {
-  .nav-mail { display: none; }
-  h1 { max-width: 15ch; }
-  .links { flex-direction: column; gap: 1.1rem; }
+/* ============================================
+   CARD STACK
+   ============================================ */
+.card-stack { display: flex; flex-direction: column; gap: 12px; }
+.card-item {
+  display: flex; overflow: hidden; border-radius: 6px;
+  border: 1px solid var(--border); background: var(--bg-card);
+  transition: transform 0.2s, border-color 0.2s;
 }
-@media (prefers-reduced-motion: no-preference) {
-  main > * { opacity: 0; transform: translateY(10px); animation: rise 0.7s cubic-bezier(.2,.7,.2,1) forwards; }
-  main > :nth-child(2) { animation-delay: 0.08s; }
-  main > :nth-child(3) { animation-delay: 0.16s; }
-  main > :nth-child(4) { animation-delay: 0.24s; }
-  main > :nth-child(5) { animation-delay: 0.32s; }
-  @keyframes rise { to { opacity: 1; transform: none; } }
+.card-item:hover { transform: translateX(4px); border-color: var(--ember-border); }
+.card-item .accent { width: 3px; background: var(--ember); flex-shrink: 0; }
+.card-item .c-inner { padding: 1.1rem 1.4rem; flex: 1; }
+.card-item .card-title { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; }
+.card-item .card-desc { font-size: 0.88rem; color: var(--text-sec); line-height: 1.65; }
+
+/* Quote bar */
+.quote-bar { display: flex; gap: 1rem; align-items: stretch; margin-top: 1.75rem; }
+.quote-bar .bar { width: 3px; background: var(--ember); border-radius: 1px; flex-shrink: 0; }
+.quote-bar .qtext {
+  font-family: var(--font-display); font-size: 1.1rem;
+  font-style: italic; color: var(--text); line-height: 1.5; max-width: 480px;
 }
+
+/* ============================================
+   GRYPHON - THE DESIGNED JOINT
+   ============================================ */
+.gryphon-section {
+  background: var(--bg);
+  padding: 7rem var(--pad-x);
+  border-top: 1px solid var(--border);
+}
+.gryphon-section-inner { max-width: var(--max-w); margin: 0 auto; }
+
+.gryphon-hdr {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3.5rem; align-items: start; margin-bottom: 3rem;
+}
+
+.gryphon-illustration {
+  display: flex; justify-content: center;
+}
+.gryphon-illustration svg { display: none; }
+.gryphon-illustration video {
+  max-width: min(100%, 880px); width: 100%;
+  height: auto; display: block;
+  border: 1px solid var(--ember-border);
+  border-radius: 6px;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.gryphon-section.revealed .gryphon-illustration video {
+  opacity: 1; transform: translateY(0); transition-delay: 150ms;
+}
+
+.gryphon-pillars {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem; margin-top: 2rem;
+}
+.pillar {
+  background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 1.5rem 1.4rem;
+  transition: border-color 0.2s;
+}
+.pillar:hover { border-color: var(--ember-border); }
+.pillar-joint {
+  border-color: var(--ember);
+  background: rgba(232,93,4,0.05);
+}
+.pillar-joint:hover { border-color: var(--ember-glow); }
+.pillar-label {
+  font-family: var(--font-mono); font-size: 0.62rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ember); margin-bottom: 0.5rem; display: block;
+}
+.pillar-title {
+  font-family: var(--font-display); font-size: 1.1rem;
+  font-weight: 500; color: var(--text); margin-bottom: 0.5rem; line-height: 1.2;
+}
+.pillar-desc { font-size: 0.85rem; color: var(--text-sec); line-height: 1.65; }
+
+.gryphon-payoff-quote {
+  margin-top: 3rem; padding-top: 2.5rem;
+  border-top: 1px dashed var(--seam); text-align: center;
+}
+.gryphon-payoff-quote p {
+  font-family: var(--font-display); font-style: italic;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  color: var(--ember); font-weight: 300; line-height: 1.4;
+  max-width: 700px; margin: 0 auto;
+}
+
+/* ============================================
+   MILESTONE STACK
+   ============================================ */
+.milestone-stack { display: flex; flex-direction: column; gap: 10px; }
+.milestone { padding: 1.1rem 1.4rem; border-radius: 6px; }
+.milestone .era {
+  font-family: var(--font-mono); font-size: 0.6rem;
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.25rem;
+}
+.milestone .shift { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; margin-bottom: 0.15rem; }
+.milestone .result { font-size: 0.88rem; }
+.milestone.past { background: var(--bg-card); border: 1px solid var(--border); }
+.milestone.past .era { color: var(--text-dim); }
+.milestone.past .shift { color: var(--text-sec); }
+.milestone.past .result { color: var(--text-dim); }
+.milestone.now { background: var(--ember); }
+.milestone.now .era, .milestone.now .shift, .milestone.now .result { color: #fff; }
+
+/* ============================================
+   STAT ROW
+   ============================================ */
+.stat-row { display: flex; gap: 1.25rem; margin-top: 2.5rem; }
+.stat-card {
+  padding: 2rem 1.5rem; flex: 1; text-align: center;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px;
+}
+.stat-card .val {
+  font-family: var(--font-display); font-size: 2.8rem;
+  color: var(--ember); font-weight: 400; line-height: 1;
+}
+.stat-card .stat-label {
+  font-family: var(--font-mono); font-size: 0.55rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-dim); margin-top: 0.5rem;
+}
+.stat-card .stat-desc { font-size: 0.88rem; color: var(--text-sec); line-height: 1.55; margin-top: 0.75rem; }
+
+/* ============================================
+   VS TABLE
+   ============================================ */
+.vs-table { display: flex; flex-direction: column; }
+.vs-row {
+  display: flex; align-items: center; padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.vs-row:last-child { border-bottom: none; }
+.vs-row .vs-label { width: 140px; font-size: 0.82rem; color: var(--text-dim); flex-shrink: 0; }
+.vs-row .vs-them { flex: 1; font-size: 0.92rem; color: var(--text-dim); }
+.vs-row .vs-us { flex: 1; font-size: 0.92rem; color: var(--ember); font-weight: 600; }
+
+/* ============================================
+   FORGE
+   ============================================ */
+.forge-section {
+  background: var(--bg-lifted);
+  padding: 5rem var(--pad-x);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.forge-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('images/bg-vortex-hires.webp');
+  background-size: cover; background-position: center center;
+  opacity: 0.12; z-index: 0;
+}
+.forge-inner { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 1; }
+.forge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+.forge-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px;
+  padding: 2rem; transition: border-color 0.2s;
+}
+.forge-card:hover { border-color: var(--ember-border); }
+.forge-card .num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: var(--ember); }
+.forge-card .ftitle { font-size: 1rem; font-weight: 600; color: var(--text); margin-top: 0.25rem; }
+.forge-card .fdesc { font-size: 0.88rem; color: var(--text-sec); line-height: 1.65; margin-top: 0.75rem; }
+.forge-card .fline { width: 100%; height: 1px; background: var(--border); margin: 1rem 0; }
+.forge-card .fnote { font-size: 0.82rem; font-style: italic; color: var(--text-dim); line-height: 1.5; }
+
+.forge-card-sprint {
+  background: rgba(232,93,4,0.05);
+  border: 1px solid var(--ember);
+  border-radius: 6px;
+  padding: 2rem 2.5rem;
+  margin-top: 2.5rem; margin-bottom: 1.25rem;
+  display: flex; align-items: flex-start; gap: 2.5rem;
+}
+.forge-card-sprint .num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: var(--ember); flex-shrink: 0; padding-top: 0.1rem; }
+.forge-card-sprint .sprint-body { flex: 1; }
+.forge-card-sprint .ftitle { font-size: 1rem; font-weight: 600; color: var(--text); margin-top: 0.25rem; }
+.forge-card-sprint .fdesc { font-size: 0.88rem; color: var(--text-sec); line-height: 1.65; margin-top: 0.75rem; max-width: 680px; }
+.forge-card-sprint .fnote { font-size: 0.82rem; font-style: italic; color: var(--ember); margin-top: 0.75rem; }
+
+/* ============================================
+   USE CASES
+   ============================================ */
+.grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; }
+.case-card {
+  padding: 1.75rem;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.case-card:hover { transform: translateY(-3px); border-color: var(--ember-border); }
+.case-card .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ember); display: inline-block; margin-right: 8px; vertical-align: middle; }
+.case-card .case-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; color: var(--text); display: inline; vertical-align: middle; }
+.case-card .case-desc { font-size: 0.88rem; color: var(--text-sec); line-height: 1.65; margin-top: 0.75rem; }
+.case-card .case-tag { font-family: var(--font-mono); font-size: 0.65rem; font-style: italic; color: var(--ember); margin-top: 0.75rem; letter-spacing: 0.02em; display: block; }
+
+/* ============================================
+   TEAM
+   ============================================ */
+.bio-headshot {
+  width: 72px; height: 72px; border-radius: 50%;
+  object-fit: cover; border: 2px solid var(--border); flex-shrink: 0;
+}
+.bio-stack { display: flex; flex-direction: column; gap: 14px; }
+.bio-card-with-photo {
+  display: flex; overflow: hidden; border-radius: 6px;
+  border: 1px solid var(--border); background: var(--bg-card);
+  transition: border-color 0.2s;
+}
+.bio-card-with-photo:hover { border-color: var(--ember-border); }
+.bio-card-with-photo .bio-accent { width: 3px; background: var(--ember); flex-shrink: 0; }
+.bio-card-with-photo .bio-content {
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  padding: 1.4rem 1.6rem; flex: 1;
+}
+.bio-card-with-photo .bio-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--text); }
+.bio-card-with-photo .bio-role { font-family: var(--font-mono); font-size: 0.6rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ember); margin-top: 0.25rem; }
+.bio-card-with-photo .bio-text { font-size: 0.88rem; color: var(--text-sec); line-height: 1.65; margin-top: 0.75rem; }
+
+/* ============================================
+   CLOSE / CTA
+   ============================================ */
+.close-section { background: var(--ember); padding: 8rem var(--pad-x); text-align: center; }
+.close-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75); display: block; margin-bottom: 1.25rem; }
+.close-headline { font-family: var(--font-display); font-size: clamp(2.6rem, 5vw, 4.4rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; color: #fff; overflow-wrap: break-word; }
+.close-sub { font-size: 1.05rem; color: rgba(255,255,255,0.88); line-height: 1.7; max-width: 560px; margin: 1.5rem auto 0; }
+.close-ctas { display: flex; gap: 1.25rem; align-items: center; justify-content: center; margin-top: 2.5rem; flex-wrap: wrap; }
+.btn-dark { display: inline-flex; align-items: center; padding: 0.85rem 2rem; background: #0A0A0A; color: #fff; font-size: 0.88rem; font-weight: 600; border-radius: 4px; transition: background 0.2s, transform 0.15s; }
+.btn-dark:hover { background: #1a1a1a; transform: translateY(-2px); }
+.close-email { font-family: var(--font-mono); font-size: 0.85rem; color: rgba(255,255,255,0.9); letter-spacing: 0.04em; border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 1px; transition: color 0.2s; }
+.close-email:hover { color: #fff; }
+.close-phases { margin-top: 4rem; }
+.close-phase-row { display: flex; justify-content: center; border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; max-width: 560px; margin: 0 auto; overflow: hidden; }
+.close-phase { flex: 1; padding: 1.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.25); }
+.close-phase:last-child { border-right: none; }
+.close-phase-num { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
+.close-phase-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 300; color: #fff; margin-top: 0.3rem; }
+.close-phase-time { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-top: 0.25rem; }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--bg); padding: 2rem var(--pad-x);
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dim); }
+.footer-copy { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-dim); letter-spacing: 0.08em; }
+.footer-domain { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-dim); letter-spacing: 0.08em; }
+
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.stagger-children .card-item,
+.stagger-children .milestone,
+.stagger-children .forge-card,
+.stagger-children .case-card,
+.stagger-children .bio-card-with-photo,
+.stagger-children .stat-card,
+.stagger-children .vs-row,
+.stagger-children .pillar {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.stagger-children.visible .card-item,
+.stagger-children.visible .milestone,
+.stagger-children.visible .forge-card,
+.stagger-children.visible .case-card,
+.stagger-children.visible .bio-card-with-photo,
+.stagger-children.visible .stat-card,
+.stagger-children.visible .vs-row,
+.stagger-children.visible .pillar { opacity: 1; transform: translateY(0); }
+.stagger-children.visible .card-item:nth-child(1),.stagger-children.visible .milestone:nth-child(1),.stagger-children.visible .forge-card:nth-child(1),.stagger-children.visible .case-card:nth-child(1),.stagger-children.visible .bio-card-with-photo:nth-child(1),.stagger-children.visible .stat-card:nth-child(1),.stagger-children.visible .vs-row:nth-child(1),.stagger-children.visible .pillar:nth-child(1){ transition-delay:0ms; }
+.stagger-children.visible .card-item:nth-child(2),.stagger-children.visible .milestone:nth-child(2),.stagger-children.visible .forge-card:nth-child(2),.stagger-children.visible .case-card:nth-child(2),.stagger-children.visible .bio-card-with-photo:nth-child(2),.stagger-children.visible .stat-card:nth-child(2),.stagger-children.visible .vs-row:nth-child(2),.stagger-children.visible .pillar:nth-child(2){ transition-delay:80ms; }
+.stagger-children.visible .card-item:nth-child(3),.stagger-children.visible .milestone:nth-child(3),.stagger-children.visible .forge-card:nth-child(3),.stagger-children.visible .case-card:nth-child(3),.stagger-children.visible .bio-card-with-photo:nth-child(3),.stagger-children.visible .stat-card:nth-child(3),.stagger-children.visible .vs-row:nth-child(3),.stagger-children.visible .pillar:nth-child(3){ transition-delay:160ms; }
+.stagger-children.visible .card-item:nth-child(4),.stagger-children.visible .case-card:nth-child(4),.stagger-children.visible .vs-row:nth-child(4){ transition-delay:240ms; }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+  .pain-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .forge-grid { grid-template-columns: 1fr; }
+  .forge-card-sprint { flex-direction: column; gap: 1rem; padding: 1.5rem; }
+  .grid-2x2 { grid-template-columns: 1fr; }
+  .section-dark  { padding: 4.5rem var(--pad-x); }
+  .section-lifted { padding: 4.5rem var(--pad-x); }
+  .pain-section { padding: 4.5rem var(--pad-x); }
+  .nav-links { display: none; }
+  .nav-cta { padding: 0.45rem 0.9rem; font-size: 0.72rem; }
+  .hero { padding: 5.5rem var(--pad-x) 4rem; min-height: auto; }
+  .arch-section { padding: 4.5rem var(--pad-x); }
+  .arch-diagram-wrap::after { display: block; }
+  .arch-scroll-hint { display: block; }
+  .gryphon-section { padding: 5rem var(--pad-x); }
+  .gryphon-hdr { grid-template-columns: 1fr; gap: 1.5rem; }
+  .gryphon-pillars { grid-template-columns: 1fr; }
+  .stat-row { flex-direction: column; }
+  .stat-card { padding: 1.5rem 1.25rem; }
+  .vs-row .vs-label { width: 90px; font-size: 0.75rem; }
+  .vs-row .vs-them, .vs-row .vs-us { font-size: 0.85rem; }
+  .label { font-size: 0.65rem; }
+  .bio-card-with-photo .bio-content { gap: 1rem; padding: 1.1rem 1.2rem; }
+  .close-section { padding: 5rem var(--pad-x); }
+  .close-phase-row { flex-direction: column; max-width: 100%; }
+  .close-phase { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 1.25rem 1rem; }
+  .close-phase:last-child { border-bottom: none; }
+  .footer { flex-direction: column; text-align: center; gap: 0.5rem; }
+  .footer-links { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 5rem var(--pad-x) 3.5rem; }
+  .section-dark, .section-lifted { padding: 4rem var(--pad-x); }
+  .pain-section { padding: 4rem var(--pad-x); }
+  .close-section { padding: 4rem var(--pad-x); }
+  .hero-title { font-size: clamp(3rem, 12vw, 4.5rem); }
+  .close-headline { font-size: clamp(1.9rem, 7vw, 2.6rem); }
+  .stat-card { padding: 1.25rem 1rem; }
+  .stat-card .val { font-size: 2.2rem; }
+  .vs-row .vs-label { width: 76px; font-size: 0.7rem; }
+  .vs-row .vs-them, .vs-row .vs-us { font-size: 0.8rem; }
+  .forge-card { padding: 1.5rem; }
+  .nav-logo { font-size: 0.55rem; letter-spacing: 0.12em; }
+  .nav-cta { padding: 0.4rem 0.75rem; font-size: 0.68rem; }
+}
+
+/* ============================================
+   TERMINAL BLOCK
+   ============================================ */
+.terminal-block {
+  background: #080808;
+  border: 1px solid #1e1e1e;
+  border-radius: 8px; overflow: hidden;
+  font-family: var(--font-mono);
+  box-shadow: 0 0 0 1px rgba(232,93,4,0.06), 0 24px 48px rgba(0,0,0,0.6);
+}
+.terminal-bar {
+  background: #111; border-bottom: 1px solid #1a1a1a;
+  padding: 0.65rem 1rem;
+  display: flex; align-items: center; gap: 6px;
+}
+.t-dot { width: 10px; height: 10px; border-radius: 50%; background: #2a2a2a; }
+.terminal-title-bar {
+  font-size: 0.58rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: #3a3a3a; margin-left: 6px;
+}
+.terminal-body {
+  padding: 1.25rem 1.4rem;
+  font-size: 0.7rem; line-height: 2;
+  min-height: 240px; position: relative;
+}
+.t-line { display: block; }
+.t-dim   { color: #383838; }
+.t-muted { color: #555; }
+.t-sec   { color: #777; }
+.t-ok    { color: #4e9e6e; }
+.t-flag  { color: var(--ember); font-weight: 500; }
+.t-bright{ color: #DEDEDE; }
+.t-head  { color: var(--ember); letter-spacing: 0.1em; font-size: 0.65rem; }
+.t-cursor {
+  display: inline-block; width: 7px; height: 0.85em;
+  background: var(--ember); vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ============================================
+   ARCHITECTURE SECTION
+   ============================================ */
+.arch-section {
+  background: var(--bg-lifted);
+  padding: 6rem var(--pad-x);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.arch-inner { max-width: var(--max-w); margin: 0 auto; }
+.arch-diagram-wrap {
+  margin-top: 3rem; overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+.arch-diagram-wrap::after {
+  content: '';
+  display: none;
+  position: absolute; top: 0; right: 0;
+  width: 60px; height: 100%;
+  background: linear-gradient(to right, transparent, var(--bg-lifted));
+  pointer-events: none;
+}
+.arch-scroll-hint {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 0.62rem; letter-spacing: 0.15em;
+  color: var(--text-dim); text-align: center;
+  margin-top: 0.75rem;
+}
+.arch-svg { width: 100%; min-width: 560px; display: block; }
+.arch-node      { fill: #1e1e1e; stroke: #444; stroke-width: 1; }
+.arch-node-c    { fill: rgba(232,93,4,0.13); stroke: #E85D04; stroke-width: 1.5; }
+.arch-label     { font-family: 'JetBrains Mono',monospace; font-size: 9.5px; fill: #C8C8C8; text-anchor: middle; dominant-baseline: middle; }
+.arch-label-c   { font-family: 'JetBrains Mono',monospace; font-size: 7.5px; fill: #E85D04; text-anchor: middle; letter-spacing: 2px; }
+.arch-label-big { font-family: 'Cormorant Garamond',Georgia,serif; font-size: 17px; fill: #FFFFFF; text-anchor: middle; dominant-baseline: middle; font-weight: 300; }
+.arch-chip      { fill: #1e1e1e; stroke: #383838; stroke-width: 1; }
+.arch-chip-text { font-family: 'JetBrains Mono',monospace; font-size: 8px; fill: #AAAAAA; text-anchor: middle; dominant-baseline: middle; }
+.arch-line-in  { stroke: rgba(232,93,4,0.75); stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+.arch-line-out { stroke: rgba(232,93,4,0.55); stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+.arch-col-label { font-family: 'JetBrains Mono',monospace; font-size: 7px; fill: #888; text-anchor: middle; letter-spacing: 1.5px; text-transform: uppercase; }
+
+/* ============================================
+   CLIENT STRIP
+   ============================================ */
+.client-strip {
+  background: var(--bg);
+  padding: 4rem var(--pad-x);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.client-strip .label { color: var(--text-dim); margin-bottom: 2rem; }
+.client-logos {
+  display: flex; justify-content: center;
+  align-items: center; gap: 1.25rem;
+  flex-wrap: wrap; margin-bottom: 1.75rem;
+}
+.client-block {
+  height: 36px; border-radius: 4px;
+  background: var(--bg-lifted);
+  border: 1px solid var(--border);
+  filter: blur(2.5px); opacity: 0.3;
+}
+.client-note {
+  font-family: var(--font-mono);
+  font-size: 0.6rem; color: var(--text-dim); letter-spacing: 0.08em;
+}
+
+/* ============================================
+   HERO BACKGROUND - DA VINCI
+   ============================================ */
+.hero-bg {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('images/swarm.webp');
+  background-size: cover; background-position: center center;
+  opacity: 0.7; z-index: 0;
+  filter: saturate(1.1) brightness(1.0);
+}
+.hero-bg-overlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 40% 50%, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.82) 70%);
+  z-index: 0;
+}
+
+/* ============================================
+   FORGE BREAK - FULL BLEED
+   ============================================ */
+.forge-break {
+  width: 100%; height: 52vh; min-height: 280px;
+  position: relative; overflow: hidden;
+  background-image: url('images/swarm-b.webp');
+  background-size: 72%; background-position: center center; background-repeat: no-repeat;
+}
+.forge-break::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 40%;
+  background: linear-gradient(to bottom, var(--bg-lifted), transparent);
+  z-index: 1;
+}
+.forge-break::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+  background: linear-gradient(to top, var(--bg), transparent);
+  z-index: 1;
+}
+
+/* ============================================
+   METRIC BADGE
+   ============================================ */
+.metric-badge {
+  display: block;
+  background: var(--ember-dim);
+  border: 1px solid var(--ember-border);
+  border-radius: 3px;
+  padding: 0.22rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem; color: var(--ember);
+  margin-top: 0.65rem; letter-spacing: 0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .stagger-children .card-item, .stagger-children .milestone,
+  .stagger-children .forge-card, .stagger-children .case-card,
+  .stagger-children .bio-card-with-photo, .stagger-children .stat-card,
+  .stagger-children .vs-row, .stagger-children .pillar,
+  .gryphon-illustration video {
+    opacity: 1 !important; transform: none !important;
+    animation: none !important; transition: none !important;
+  }
+}
+
+.footer-links { display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); }
+.footer-links a:hover { color: var(--text-sec); }
 </style>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Atelier Superintelligence",
-  "url": "https://atlr.pro/",
-  "email": "hello@atlr.pro",
-  "description": "Bespoke agentic systems. Deep context. Real integrations. Results that compound.",
-  "founder": [
-    { "@type": "Person", "name": "Michael Chase", "sameAs": "https://www.linkedin.com/in/chasemichael/" },
-    { "@type": "Person", "name": "Sean Evans" }
-  ],
-  "address": { "@type": "PostalAddress", "addressLocality": "Toronto", "addressCountry": "CA" }
-}
+{"@context":"https://schema.org","@type":"Organization","name":"Atelier Superintelligence","url":"https://atlr.pro/","email":"hello@atlr.pro","description":"Bespoke agentic systems. Deep context. Real integrations. Results that compound.","founder":[{"@type":"Person","name":"Michael Chase","sameAs":"https://www.linkedin.com/in/chasemichael/"},{"@type":"Person","name":"Sean Evans"}],"address":{"@type":"PostalAddress","addressLocality":"Toronto","addressCountry":"CA"}}
 </script>
 </head>
 <body>
 
-<header class="nav">
-  <a href="/" class="wordmark">ATELIER <span>/</span> SUPERINTELLIGENCE</a>
-  <a href="mailto:hello@atlr.pro" class="nav-mail">hello@atlr.pro</a>
-</header>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo" style="text-decoration:none;color:inherit">ATELIER <span style="color:var(--ember)">/</span> SUPERINTELLIGENCE</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#pain">The Problem</a></li>
+      <li><a href="#method">Method</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://www.aiimaginelabs.com/materiality/">Materiality</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Start with a Sprint &rarr;</a>
+  </div>
+</nav>
 
-<main>
-  <p class="eyebrow">Atelier Superintelligence &middot; Toronto</p>
-  <h1>Bespoke agentic systems. <em>Deep context.</em> Real integrations. Results that compound.</h1>
-  <div class="rule"></div>
-  <p class="lede">We design and operate agentic systems fitted to the way your organisation actually works. The full site is on its way. Until then, write to <strong><a href="mailto:hello@atlr.pro">hello@atlr.pro</a></strong>.</p>
-  <ul class="links">
-    <li><a href="https://www.aiimaginelabs.com/materiality/"><span class="arrow">&rarr;</span> Materiality, the weekly AI series <span class="where">aiimaginelabs.com</span></a></li>
-    <li><a href="https://www.linkedin.com/in/chasemichael/"><span class="arrow">&rarr;</span> Michael Chase <span class="where">LinkedIn</span></a></li>
-  </ul>
-</main>
+<!-- ============================================================
+     HERO - v4 narrative, v6 design language
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-bg-overlay" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow reveal">Bespoke Agentic Systems</span>
+    <h1 class="hero-title reveal">
+      <span style="white-space:nowrap">Your AI problem</span><br>
+      <em>isn&rsquo;t AI.</em>
+    </h1>
+    <div class="hero-rule reveal"></div>
+    <p class="hero-sub reveal">
+      Every organization has access to the same models, and the gap is between that raw capability and <strong>a system that actually runs your&nbsp;business.</strong>
+    </p>
+    <div class="hero-ctas reveal">
+      <a href="#pain" class="btn-primary">See the real problem &darr;</a>
+      <a href="#contact" class="btn-ghost">Start with a Sprint &rarr;</a>
+    </div>
+  </div>
+</section>
 
-<footer>
-  <span>&copy; 2026 Atelier Superintelligence</span>
-  <a href="mailto:hello@atlr.pro">hello@atlr.pro</a>
+<!-- ============================================================
+     THE PAIN - YOU ARE BUILDING A FRANKENSTEIN
+     ============================================================ -->
+<div class="fold-rule on-lifted" aria-hidden="true"></div>
+
+<section class="pain-section" id="pain">
+  <div class="pain-inner">
+
+    <div>
+      <span class="label reveal">The Real Problem</span>
+      <h2 class="pain-title reveal">Companies are building<br><em>Frankensteins.</em></h2>
+      <p class="body-text reveal" style="margin-top:0">One team is on ChatGPT. Another is using Claude. Sales bought Copilot. Someone in ops found a tool nobody else has heard of. Every department solving its own problem, none of it connected, none of it learning from the rest.</p>
+      <p class="body-text reveal" style="margin-top:1rem">This is not an AI strategy. It is a collection of disconnected experiments. Meanwhile, competitors are building unified autonomous systems that run across the whole business. And startups with ten people are moving faster than entire organizations.</p>
+      <div class="quote-bar reveal">
+        <div class="bar"></div>
+        <div class="qtext">The right builder matters more than the right model. Models are converging. The difference is who can make them work together.</div>
+      </div>
+    </div>
+
+    <div class="card-stack stagger-children">
+      <div class="card-item">
+        <div class="accent"></div>
+        <div class="c-inner">
+          <div class="card-title">Competitors are not running pilots.</div>
+          <div class="card-desc">They are shipping. Every quarter spent in test mode is ground that does not come back.</div>
+        </div>
+      </div>
+      <div class="card-item">
+        <div class="accent"></div>
+        <div class="c-inner">
+          <div class="card-title">Startups are outrunning large organizations.</div>
+          <div class="card-desc">Ten people with the right infrastructure are outproducing teams of hundreds. The gap widens every month.</div>
+        </div>
+      </div>
+      <div class="card-item">
+        <div class="accent"></div>
+        <div class="c-inner">
+          <div class="card-title">The right builder matters more than the right model.</div>
+          <div class="card-desc">Models are converging. The difference is who can make them work together in a specific environment.</div>
+        </div>
+      </div>
+      <div class="card-item">
+        <div class="accent"></div>
+        <div class="c-inner">
+          <div class="card-title">We show. We don&rsquo;t pitch.</div>
+          <div class="card-desc">Working systems on your data. You watch it run before committing to anything.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FORGE BREAK -->
+<div class="forge-break" aria-hidden="true"></div>
+
+<!-- THE SHIFT -->
+<section class="section-dark">
+  <div class="inner two-col">
+    <div>
+      <span class="label">Where This Is Headed</span>
+      <h2 class="section-title reveal">The next enterprise layer<br>is <em>autonomous.</em></h2>
+      <p class="body-text reveal" style="margin-top:1.25rem">Every major technology shift follows the same arc. The capability appears. Then someone builds the infrastructure to make it useful at scale. Databases became ERP. Networks became&nbsp;cloud.</p>
+      <p class="body-text reveal" style="margin-top:1rem">The organizations building an intelligent operating layer now will have a structural lead that&rsquo;s very hard to close. Not a chatbot. A system that runs the business at machine speed, around&nbsp;the&nbsp;clock.</p>
+    </div>
+    <div class="milestone-stack stagger-children">
+      <div class="milestone past"><div class="era">1990s</div><div class="shift">Databases &rarr; ERP</div><div class="result">Operational backbone</div></div>
+      <div class="milestone past"><div class="era">2000s</div><div class="shift">Networks &rarr; Cloud</div><div class="result">Scalable infrastructure</div></div>
+      <div class="milestone past"><div class="era">2010s</div><div class="shift">Data &rarr; Analytics</div><div class="result">Decision support</div></div>
+      <div class="milestone now"><div class="era">NOW</div><div class="shift">Models &rarr; Autonomous OS</div><div class="result">Intelligent operations</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE BUILD -->
+<section class="section-lifted" id="solution">
+  <div class="inner two-col">
+    <div>
+      <span class="label">The Short Version</span>
+      <h2 class="section-title reveal">We build <em>that layer.</em></h2>
+      <p class="body-text reveal" style="margin-top:1.25rem">Atelier designs and operates autonomous infrastructure fitted to your organization. We learn the domain, engineer systems around your actual constraints, connect to your real stack, and keep improving the whole&nbsp;thing.</p>
+      <p class="body-text reveal" style="margin-top:1rem">Not a product you configure. Not a platform you rent. An embedded team that builds what your business needs, then stays to make&nbsp;it&nbsp;better.</p>
+    </div>
+    <div class="card-stack stagger-children">
+      <div class="card-item"><div class="accent"></div><div class="c-inner"><div class="card-title">Context Engineering</div><div class="card-desc">Your regulatory docs, process maps, and institutional knowledge loaded into every operation. The system works with your actual domain, not a generic baseline.</div></div></div>
+      <div class="card-item"><div class="accent"></div><div class="c-inner"><div class="card-title">Production Integrations</div><div class="card-desc">Direct connections to your real tools. Salesforce, SAP, internal databases, legacy systems. Your actual stack, not a demo environment.</div></div></div>
+      <div class="card-item"><div class="accent"></div><div class="c-inner"><div class="card-title">Swarm Orchestration</div><div class="card-desc">Multiple agents working together. One reviews, another builds, a third validates. Coordinated teams of systems, not a single chatbot.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE DIAGRAM -->
+<section class="arch-section reveal">
+  <div class="arch-inner">
+    <span class="label">How It Connects</span>
+    <h2 class="section-title" style="margin-top:0.75rem">Your stack. Your data.<br><em>One coherent layer.</em></h2>
+    <div class="arch-diagram-wrap">
+      <svg class="arch-svg" id="arch-svg" viewBox="0 0 860 252" xmlns="http://www.w3.org/2000/svg" aria-label="Atelier system architecture diagram">
+
+        <!-- Column labels -->
+        <text class="arch-col-label" x="75" y="10">Data Sources</text>
+        <text class="arch-col-label" x="430" y="10">Atelier Agent Layer</text>
+        <text class="arch-col-label" x="785" y="10">Outputs</text>
+
+        <!-- LEFT: Input nodes -->
+        <rect class="arch-node" x="0"   y="22"  width="150" height="34" rx="4"/>
+        <text class="arch-label" x="75" y="39">Salesforce / CRM</text>
+
+        <rect class="arch-node" x="0"   y="72"  width="150" height="34" rx="4"/>
+        <text class="arch-label" x="75" y="89">SAP / ERP</text>
+
+        <rect class="arch-node" x="0"   y="122" width="150" height="34" rx="4"/>
+        <text class="arch-label" x="75" y="139">Internal Databases</text>
+
+        <rect class="arch-node" x="0"   y="172" width="150" height="34" rx="4"/>
+        <text class="arch-label" x="75" y="189">Documents &amp; Email</text>
+
+        <!-- FLOW LINES: left → center -->
+        <line class="arch-line-in" x1="150" y1="39"  x2="330" y2="95">
+          <animate attributeName="stroke-dashoffset" from="9" to="0" dur="0.55s" repeatCount="indefinite"/>
+        </line>
+        <line class="arch-line-in" x1="150" y1="89"  x2="330" y2="115">
+          <animate attributeName="stroke-dashoffset" from="9" to="0" dur="0.65s" repeatCount="indefinite"/>
+        </line>
+        <line class="arch-line-in" x1="150" y1="139" x2="330" y2="140">
+          <animate attributeName="stroke-dashoffset" from="9" to="0" dur="0.75s" repeatCount="indefinite"/>
+        </line>
+        <line class="arch-line-in" x1="150" y1="189" x2="330" y2="165">
+          <animate attributeName="stroke-dashoffset" from="9" to="0" dur="0.85s" repeatCount="indefinite"/>
+        </line>
+
+        <!-- CENTER: Atelier box -->
+        <rect class="arch-node-c" x="330" y="55" width="200" height="150" rx="6"/>
+        <text class="arch-label-c"   x="430" y="84">ATELIER</text>
+        <text class="arch-label-big" x="430" y="112">Agent Layer</text>
+
+        <!-- Agent chips inside center -->
+        <rect class="arch-chip" x="350" y="130" width="160" height="22" rx="3"/>
+        <text class="arch-chip-text" x="430" y="141">Review · Build · Validate</text>
+
+        <rect class="arch-chip" x="350" y="158" width="160" height="22" rx="3"/>
+        <text class="arch-chip-text" x="430" y="169">Context · Memory · Judgment</text>
+
+        <!-- FLOW LINES: center → right -->
+        <line class="arch-line-out" x1="530" y1="95"  x2="710" y2="39">
+          <animate attributeName="stroke-dashoffset" from="9" to="0" dur="0.55s" repeatCount="indefinite"/>
+        </line>
+        <line class="arch-line-out" x1="530" y1="115" x2="710" y2="89">
+          <animate attributeName="stroke-dashoffset" from="9" to="0" dur="0.65s" repeatCount="indefinite"/>
+        </line>
+        <line class="arch-line-out" x1="530" y1="140" x2="710" y2="139">
+          <animate attributeName="stroke-dashoffset" from="9" to="0" dur="0.75s" repeatCount="indefinite"/>
+        </line>
+        <line class="arch-line-out" x1="530" y1="165" x2="710" y2="189">
+          <animate attributeName="stroke-dashoffset" from="9" to="0" dur="0.85s" repeatCount="indefinite"/>
+        </line>
+
+        <!-- RIGHT: Output nodes -->
+        <rect class="arch-node" x="710" y="22"  width="150" height="34" rx="4"/>
+        <text class="arch-label" x="785" y="39">Compliance Reports</text>
+
+        <rect class="arch-node" x="710" y="72"  width="150" height="34" rx="4"/>
+        <text class="arch-label" x="785" y="89">Exec Dashboards</text>
+
+        <rect class="arch-node" x="710" y="122" width="150" height="34" rx="4"/>
+        <text class="arch-label" x="785" y="139">Action Items</text>
+
+        <rect class="arch-node" x="710" y="172" width="150" height="34" rx="4"/>
+        <text class="arch-label" x="785" y="189">Alerts &amp; Escalations</text>
+
+      </svg>
+    </div>
+    <p class="arch-scroll-hint">&#8592; swipe to explore &rarr;</p>
+  </div>
+</section>
+
+<!-- HOW IT THINKS -->
+<section class="section-dark">
+  <div class="inner two-col">
+    <div>
+      <span class="label">Beyond Simple Prompts</span>
+      <h2 class="section-title reveal">Systems that understand<br>the <em>goal,</em> not just the&nbsp;ask.</h2>
+      <p class="body-text reveal" style="margin-top:1.25rem">Most deployed systems follow instructions literally. Useful, but limited. Ours understand the business outcome behind the instruction. They know what good looks like, catch when things drift, and adjust before anyone steps&nbsp;in.</p>
+      <p class="body-text reveal" style="margin-top:1rem">When confidence is low, they stop and ask rather than guess. That&rsquo;s the difference between a tool and&nbsp;infrastructure.</p>
+    </div>
+    <div class="terminal-block reveal">
+      <div class="terminal-bar">
+        <span class="t-dot"></span><span class="t-dot"></span><span class="t-dot"></span>
+        <span class="terminal-title-bar">ATELIER / OPERATIONS AGENT</span>
+      </div>
+      <div class="terminal-body">
+        <span class="t-line"><span class="t-head">// Intent Engineering</span></span>
+        <span class="t-line"><span class="t-dim">Goal loaded: </span><span class="t-sec">reduce compliance queue by 60%</span></span>
+        <span class="t-line"><span class="t-dim">Context: </span><span class="t-sec">policy v2.3 · client risk profile · Q3 thresholds</span></span>
+        <span class="t-line"><span class="t-ok">✓ </span><span class="t-sec">Proceeding with batch review</span></span>
+        <span class="t-line">&nbsp;</span>
+        <span class="t-line"><span class="t-head">// Self-Correcting Judgment</span></span>
+        <span class="t-line"><span class="t-dim">TXN-8831 </span><span class="t-flag">AMBIGUOUS </span><span class="t-dim">: cross-border policy conflict</span></span>
+        <span class="t-line"><span class="t-dim">Confidence: </span><span class="t-flag">61% </span><span class="t-dim">[below 80% threshold]</span></span>
+        <span class="t-line"><span class="t-dim">Action: </span><span class="t-sec">stopping · escalating to review queue</span></span>
+        <span class="t-line"><span class="t-dim">Reason logged for auditor</span></span>
+        <span class="t-line">&nbsp;</span>
+        <span class="t-line"><span class="t-head">// Adaptive Execution</span></span>
+        <span class="t-line"><span class="t-flag">▸ </span><span class="t-sec">Policy update detected mid-run</span></span>
+        <span class="t-line"><span class="t-dim">Reloading context with v2.4...</span><span class="t-ok">  done</span></span>
+        <span class="t-line"><span class="t-ok">✓ </span><span class="t-sec">Continuing · 2,844 cleared · 3 flagged</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPERATIONAL LEVERAGE -->
+<section class="section-lifted">
+  <div class="inner">
+    <span class="label">The Math</span>
+    <h2 class="section-title reveal">Five people doing<br>fifty people&rsquo;s <em>work.</em></h2>
+    <p class="body-text reveal" style="margin-top:1.25rem;max-width:680px">Not about cutting headcount. Your best people stop spending time on coordination and start spending it on judgment, strategy, and the work you actually hired them&nbsp;for. Systems handle throughput. Your team handles the decisions that&nbsp;matter.</p>
+    <div class="stat-row stagger-children">
+      <div class="stat-card"><div class="val">5 &rarr; 50</div><div class="stat-label">Effective Headcount</div><div class="stat-desc">Same team. Radically different output.</div></div>
+      <div class="stat-card"><div class="val">24/7</div><div class="stat-label">Always Running</div><div class="stat-desc">The system works nights, weekends, and holidays.</div></div>
+      <div class="stat-card"><div class="val">&uarr;</div><div class="stat-label">Compounding</div><div class="stat-desc">Every week it gets better at your specific problem.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- POSITIONING -->
+<section class="section-dark">
+  <div class="inner two-col">
+    <div>
+      <span class="label">How We&rsquo;re Different</span>
+      <h2 class="section-title reveal">Think <em>skunkworks.</em><br>Not&nbsp;vendor.</h2>
+      <p class="body-text reveal" style="margin-top:1.25rem">Every system we build is fitted to one organization with its own constraints. We embed with your team, learn the problem from the inside, and build something that operates like it was made in-house. Because it&nbsp;was.</p>
+      <div class="quote-bar reveal">
+        <div class="bar"></div>
+        <div class="qtext">We don&rsquo;t sell AI. We sell working systems that happen to be&nbsp;autonomous.</div>
+      </div>
+    </div>
+    <div class="vs-table stagger-children">
+      <div class="vs-row"><div class="vs-label">vs. Consultancies</div><div class="vs-them">They advise</div><div class="vs-us">We build and operate</div></div>
+      <div class="vs-row"><div class="vs-label">vs. Platforms</div><div class="vs-them">They sell access</div><div class="vs-us">We sell outcomes</div></div>
+      <div class="vs-row"><div class="vs-label">vs. Automation</div><div class="vs-them">They replace tasks</div><div class="vs-us">We multiply people</div></div>
+      <div class="vs-row"><div class="vs-label">vs. Dev Shops</div><div class="vs-them">They hand off</div><div class="vs-us">We stay and improve</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FORGE -->
+<div class="forge-section" id="method">
+  <div class="forge-inner">
+    <span class="label reveal">Forge</span>
+    <h2 class="section-title reveal">What it looks like<br>to work with&nbsp;us.</h2>
+    <div class="forge-card-sprint reveal">
+      <div class="num">00</div>
+      <div class="sprint-body">
+        <div class="ftitle">The Forge Sprint</div>
+        <p class="fdesc">Before any long engagement, we run a one-week Sprint. One system, built on your actual data, connected to your real infrastructure. The goal is simple: you see something working before you commit to anything else. Fixed scope. Fixed timeline. No ambiguity about what you are getting.</p>
+        <p class="fnote">This is how most engagements begin.</p>
+      </div>
+    </div>
+    <div class="forge-grid stagger-children">
+      <div class="forge-card">
+        <div class="num">01</div>
+        <div class="ftitle">Discovery</div>
+        <p class="fdesc">We spend real time learning your domain. Not a one-day workshop. We talk to your team, map your systems, and find the constraints nobody else asks about.</p>
+        <div class="fline"></div>
+        <p class="fnote">Typical timeline: 2&ndash;4 weeks of embedded discovery before we scope anything.</p>
+      </div>
+      <div class="forge-card">
+        <div class="num">02</div>
+        <div class="ftitle">Scoped Build</div>
+        <p class="fdesc">Honest scope. Clear about what works and what does not yet. We build the system, connect it to your infrastructure, and put it into production.</p>
+        <div class="fline"></div>
+        <p class="fnote">You see it running on your own data before we move past this stage.</p>
+      </div>
+      <div class="forge-card">
+        <div class="num">03</div>
+        <div class="ftitle">Operate</div>
+        <p class="fdesc">Operate is not a service tail. It is the business. The system expands in scope and capability every month, running on more of your data, integrating with more of your stack. What you have in month twelve is a different order of magnitude from month one.</p>
+        <div class="fline"></div>
+        <p class="fnote">Most clients expand scope within the first two quarters. The system earns its keep by getting better at your specific problem.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- USE CASES -->
+<section class="section-lifted" id="work">
+  <div class="inner">
+    <span class="label reveal">We Can Prove It</span>
+    <h2 class="section-title reveal">Working systems. <em>Real&nbsp;industries.</em></h2>
+    <div class="grid-2x2 stagger-children">
+      <div class="case-card"><span class="dot"></span><span class="case-title">Financial Services</span><p class="case-desc">Compliance operations running at the pace of the business. Agents review transactions, flag anomalies, and generate regulator-ready reports. We can show you this&nbsp;running.</p><span class="case-tag">Your regulatory landscape + risk&nbsp;profile</span><span class="metric-badge">340 reviews/day &rarr; previously 40</span></div>
+      <div class="case-card"><span class="dot"></span><span class="case-title">Advertising &amp;&nbsp;Creative</span><p class="case-desc">Pipeline orchestration across broadcast, VFX, and post-production. Agents coordinating work that used to need a full production team. We have working&nbsp;examples.</p><span class="case-tag">Creative intent + technical&nbsp;constraints</span><span class="metric-badge">4-day review cycle &rarr; 6 hours</span></div>
+      <div class="case-card"><span class="dot"></span><span class="case-title">Enterprise Operations</span><p class="case-desc">Multi-system coordination in real time. Agents working across inventory, logistics, and customer databases. Real data, real&nbsp;throughput.</p><span class="case-tag">Your actual systems, not a&nbsp;sandbox</span><span class="metric-badge">3 systems coordinated · 1 agent team</span></div>
+      <div class="case-card"><span class="dot"></span><span class="case-title">Customer Intelligence</span><p class="case-desc">Agents with full caller history, product knowledge, and resolution authority. Not a chatbot. A system that&nbsp;acts.</p><span class="case-tag">Every interaction makes the next one&nbsp;smarter</span><span class="metric-badge">First-contact resolution +60%</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section-dark" id="team">
+  <div class="inner two-col">
+    <div>
+      <span class="label">The Team</span>
+      <h2 class="section-title reveal">Polymaths who have<br>shipped this <em>before.</em></h2>
+      <p class="body-text reveal" style="margin-top:1.25rem">Not a team that read about this. Decades building at the edge of technology and production. Broadcast, banking, brokerage, insurance, advertising, immersive media, consulting, enterprise commerce. The common thread: building where no playbook&nbsp;exists.</p>
+      <div class="quote-bar reveal">
+        <div class="bar"></div>
+        <div class="qtext">The part where you figure it out from scratch. Done that. Several times. That&rsquo;s the whole&nbsp;point.</div>
+      </div>
+    </div>
+    <div class="bio-stack stagger-children">
+      <div class="bio-card-with-photo">
+        <div class="bio-accent"></div>
+        <div class="bio-content">
+          <img src="images/sean-evans.jpg" alt="Sean Evans" class="bio-headshot" width="72" height="72" loading="lazy">
+          <div>
+            <div class="bio-name">Sean Evans</div>
+            <div class="bio-role">Co-Founder &amp; CTO</div>
+            <div class="bio-text">28 years building production systems across broadcast, animation, VR, and immersive media. Co-founded Occupied VR, 1188 Films, and Holy City VR. Executive produced No Dress Rehearsal for Amazon Prime (7 Canadian Screen Award nominations). Built generative and XR pipelines for the Design Exchange Toronto. SIGGRAPH presenter. CTO at&nbsp;EVOQ.</div>
+          </div>
+        </div>
+      </div>
+      <div class="bio-card-with-photo">
+        <div class="bio-accent"></div>
+        <div class="bio-content">
+          <img src="images/michael-chase.jpg" alt="Michael Chase" class="bio-headshot" width="72" height="72" loading="lazy">
+          <div>
+            <div class="bio-name">Michael Chase</div>
+            <div class="bio-role">Co-Founder &amp; CEO</div>
+            <div class="bio-text">30 years at the edge of emerging technology. Built and exited 7 companies including TRAVAI (acquired by Kognitiv). Ran Deloitte&rsquo;s Novel &amp; Exponential Tech group, turning proofs of concept into enterprise deployments. CSO at Kognitiv, scaling AI-driven commerce across $500M in enterprise value. Google, BMW, Thomson Reuters, Nike. Forbes Top 100 CMO.&nbsp;MIT.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<div class="close-section" id="contact">
+  <span class="close-label">Here&rsquo;s how it starts</span>
+  <h2 class="close-headline">Most engagements begin<br>with a Sprint.</h2>
+  <p class="close-sub">One week. One system. Running on your actual data. You see it working before anything else is on the table. If it&rsquo;s right, we go further. If it&rsquo;s not, you&rsquo;ve lost a week, not a year.</p>
+  <div class="close-ctas">
+    <a href="mailto:hello@atlr.pro" class="btn-dark">Start with a Sprint &rarr;</a>
+    <a href="mailto:hello@atlr.pro" class="close-email">hello@atlr.pro</a>
+  </div>
+  <div class="close-phases">
+    <div class="close-phase-row">
+      <div class="close-phase">
+        <div class="close-phase-num">Week 01</div>
+        <div class="close-phase-name">Sprint</div>
+        <div class="close-phase-time">Something working</div>
+      </div>
+      <div class="close-phase">
+        <div class="close-phase-num">Weeks 02&ndash;12</div>
+        <div class="close-phase-name">Build</div>
+        <div class="close-phase-time">Scoped engagement</div>
+      </div>
+      <div class="close-phase">
+        <div class="close-phase-num">Month 03+</div>
+        <div class="close-phase-name">Operate</div>
+        <div class="close-phase-time">Expanding monthly</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">ATELIER <span style="color:var(--ember)">/</span> SUPERINTELLIGENCE</div>
+  <div class="footer-copy">&copy; 2026 Atelier Superintelligence</div>
+  <div class="footer-links">
+    <a href="mailto:hello@atlr.pro">hello@atlr.pro</a>
+    <a href="https://www.aiimaginelabs.com/materiality/">Materiality</a>
+    <a href="https://www.linkedin.com/in/chasemichael/">Michael on LinkedIn</a>
+  </div>
 </footer>
 
+<script>
+  // === HERO TERMINAL ANIMATION ===
+  (function() {
+    const output = document.getElementById('hero-terminal-output');
+    const wrap   = document.getElementById('hero-terminal-wrap');
+    if (!output || !wrap) return;
+
+    const lines = [
+      { text: '09:41:17  Loading regulatory context',    cls: 't-sec',   suffix: '       <span class="t-ok">✓</span>' },
+      { text: '09:41:18  Ingesting transaction batch',   cls: 't-sec',   suffix: '     <span class="t-muted">2,847 items</span>' },
+      { text: '09:41:19  Running anomaly detection',     cls: 't-muted', suffix: '' },
+      { text: '09:41:21  ▸ TXN-4819  within threshold',  cls: 't-muted', suffix: '' },
+      { text: '09:41:21  ▸ TXN-4820  within threshold',  cls: 't-muted', suffix: '' },
+      { text: '09:41:22  ▸ TXN-8831  <span class="t-flag">FLAGGED</span>, limit +340%', cls: 't-sec', suffix: '' },
+      { text: '09:41:24  Cross-referencing risk profile', cls: 't-sec',  suffix: '  <span class="t-ok">✓</span>' },
+      { text: '09:41:25  Confidence: 94%, escalating', cls: 't-sec', suffix: '' },
+      { text: '09:41:26  Generating regulator report',  cls: 't-sec',   suffix: '   <span class="t-ok">✓</span>' },
+      { text: '09:41:27  ─────────────────────────────', cls: 't-dim',  suffix: '' },
+      { text: '          2,844 cleared · <span class="t-flag">3 flagged</span> · 1 escalated', cls: 't-bright', suffix: '' },
+    ];
+
+    let idx = 0;
+    let timer = null;
+
+    function addLine() {
+      if (idx >= lines.length) {
+        setTimeout(reset, 3500);
+        return;
+      }
+      const l = lines[idx];
+      const span = document.createElement('span');
+      span.className = 't-line';
+      span.innerHTML = '<span class="' + l.cls + '">' + l.text + l.suffix + '</span>';
+      output.appendChild(span);
+      output.scrollTop = output.scrollHeight;
+      idx++;
+      timer = setTimeout(addLine, idx < 3 ? 420 : idx < 6 ? 280 : 360);
+    }
+
+    function reset() {
+      output.innerHTML = '';
+      idx = 0;
+      addLine();
+    }
+
+    // Fade in wrap then start typing
+    setTimeout(() => {
+      wrap.classList.add('loaded');
+      setTimeout(addLine, 600);
+    }, 300);
+  })();
+
+  // === NAV SCROLL ===
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // === GENERAL SCROLL REVEAL ===
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .stagger-children').forEach(el => revealObs.observe(el));
+
+  // === GRYPHON SECTION ENTRY ===
+  const gryphonSection = document.querySelector('.gryphon-section');
+  if (gryphonSection) {
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) gryphonSection.classList.add('revealed');
+      });
+    }, { threshold: 0.2 }).observe(gryphonSection);
+  }
+
+</script>
 </body>
 </html>
