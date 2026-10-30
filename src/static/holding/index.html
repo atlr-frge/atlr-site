@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier Superintelligence</title>
+<meta name="description" content="Atelier Superintelligence builds bespoke agentic systems. Deep context. Real integrations. Results that compound.">
+<link rel="canonical" href="https://atlr.pro/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Atelier Superintelligence">
+<meta property="og:description" content="Bespoke agentic systems. Deep context. Real integrations. Results that compound.">
+<meta property="og:url" content="https://atlr.pro/">
+<meta property="og:site_name" content="Atelier Superintelligence">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0A'/%3E%3Cpath d='M19 5 L11 27' stroke='%23E85D04' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:           #0A0A0A;
+  --ember:        #E85D04;
+  --ember-glow:   #F48C06;
+  --ember-dim:    rgba(232,93,4,0.09);
+  --ember-border: rgba(232,93,4,0.28);
+  --text:         #FAFAFA;
+  --text-sec:     #A0A0A0;
+  --text-dim:     #555555;
+  --border:       #222222;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+  --pad-x:        clamp(1.25rem, 5vw, 5rem);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 17px; text-rendering: optimizeLegibility; }
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex; flex-direction: column;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  position: relative;
+}
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 18% 110%, rgba(232,93,4,0.16), transparent 65%),
+    radial-gradient(ellipse 45% 40% at 95% -10%, rgba(244,140,6,0.07), transparent 70%);
+}
+a { color: inherit; text-decoration: none; }
+
+.nav {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem var(--pad-x);
+}
+.wordmark {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text);
+}
+.wordmark span { color: var(--ember); }
+.nav-mail {
+  font-family: var(--font-mono);
+  font-size: 0.68rem; letter-spacing: 0.06em;
+  color: var(--text-sec);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-mail:hover { color: var(--text); border-color: var(--ember); }
+
+main {
+  position: relative; z-index: 1;
+  flex: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(2rem, 7vh, 5rem) var(--pad-x) clamp(2rem, 6vh, 4rem);
+  max-width: 1080px; width: 100%;
+  margin: 0 auto;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.66rem; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 2.2rem;
+}
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.2vw, 4.8rem);
+  font-weight: 300; line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  max-width: 19ch;
+}
+h1 em { font-style: italic; color: var(--ember); }
+.rule { width: 48px; height: 1px; background: var(--ember); margin: 2rem 0; }
+.lede {
+  font-size: 1.08rem; line-height: 1.6; font-weight: 300;
+  color: var(--text-sec);
+  max-width: 48ch;
+}
+.lede strong { color: var(--text); font-weight: 500; }
+
+.links {
+  display: flex; flex-wrap: wrap; gap: 0.9rem 2.6rem;
+  margin-top: 3rem;
+  list-style: none;
+}
+.links a {
+  display: inline-flex; align-items: baseline; gap: 0.55rem;
+  font-size: 0.92rem; font-weight: 400;
+  color: var(--text);
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.2s, color 0.2s;
+}
+.links a:hover { border-color: var(--ember); }
+.links a .arrow { color: var(--ember); font-family: var(--font-mono); font-size: 0.8em; }
+.links a .where {
+  font-family: var(--font-mono); font-size: 0.66rem;
+  letter-spacing: 0.08em; color: var(--text-dim);
+}
+
+footer {
+  position: relative; z-index: 1;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem 2rem;
+  padding: 1.4rem var(--pad-x) 1.8rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-dim);
+}
+footer a:hover { color: var(--text-sec); }
+
+@media (max-width: 640px) {
+  .nav-mail { display: none; }
+  h1 { max-width: 15ch; }
+  .links { flex-direction: column; gap: 1.1rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  main > * { opacity: 0; transform: translateY(10px); animation: rise 0.7s cubic-bezier(.2,.7,.2,1) forwards; }
+  main > :nth-child(2) { animation-delay: 0.08s; }
+  main > :nth-child(3) { animation-delay: 0.16s; }
+  main > :nth-child(4) { animation-delay: 0.24s; }
+  main > :nth-child(5) { animation-delay: 0.32s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Atelier Superintelligence",
+  "url": "https://atlr.pro/",
+  "email": "hello@atlr.pro",
+  "description": "Bespoke agentic systems. Deep context. Real integrations. Results that compound.",
+  "founder": [
+    { "@type": "Person", "name": "Michael Chase", "sameAs": "https://www.linkedin.com/in/chasemichael/" },
+    { "@type": "Person", "name": "Sean Evans" }
+  ],
+  "address": { "@type": "PostalAddress", "addressLocality": "Toronto", "addressCountry": "CA" }
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <a href="/" class="wordmark">ATELIER <span>/</span> SUPERINTELLIGENCE</a>
+  <a href="mailto:hello@atlr.pro" class="nav-mail">hello@atlr.pro</a>
+</header>
+
+<main>
+  <p class="eyebrow">Atelier Superintelligence &middot; Toronto</p>
+  <h1>Bespoke agentic systems. <em>Deep context.</em> Real integrations. Results that compound.</h1>
+  <div class="rule"></div>
+  <p class="lede">We design and operate agentic systems fitted to the way your organisation actually works. The full site is on its way. Until then, write to <strong><a href="mailto:hello@atlr.pro">hello@atlr.pro</a></strong>.</p>
+  <ul class="links">
+    <li><a href="https://www.aiimaginelabs.com/materiality/"><span class="arrow">&rarr;</span> Materiality, the weekly AI series <span class="where">aiimaginelabs.com</span></a></li>
+    <li><a href="https://www.linkedin.com/in/chasemichael/"><span class="arrow">&rarr;</span> Michael Chase <span class="where">LinkedIn</span></a></li>
+  </ul>
+</main>
+
+<footer>
+  <span>&copy; 2026 Atelier Superintelligence</span>
+  <a href="mailto:hello@atlr.pro">hello@atlr.pro</a>
+</footer>
+
+</body>
+</html>
