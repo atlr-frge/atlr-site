@@ -39,6 +39,7 @@ ORG_NAME = 'Atelier Superintelligence'
 POSITIONING = 'Bespoke agentic systems. Deep context. Real integrations. Results that compound.'
 EMAIL = 'hello@atlr.pro'
 LINKEDIN_MICHAEL = 'https://www.linkedin.com/in/chasemichael/'
+LINKEDIN_SEAN = 'https://www.linkedin.com/in/seanthomasevans/'
 MATERIALITY_URL = 'https://www.aiimaginelabs.com/materiality/'
 
 layout = open(os.path.join(SRC, 'layout.html'), encoding='utf-8').read()
@@ -62,7 +63,7 @@ def base_graph():
          'worksFor': {'@id': i['org']}, 'sameAs': [LINKEDIN_MICHAEL, 'https://www.aiimaginelabs.com/about/'],
          'url': SITE + '/team/#michael'},
         {'@type': 'Person', '@id': i['sean'], 'name': 'Sean Evans', 'jobTitle': 'Co-founder, engineering and production',
-         'worksFor': {'@id': i['org']}, 'url': SITE + '/team/#sean'},
+         'worksFor': {'@id': i['org']}, 'sameAs': [LINKEDIN_SEAN], 'url': SITE + '/team/#sean'},
     ]
 
 def graph_for(meta, canonical):

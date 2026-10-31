@@ -1,6 +1,6 @@
 # SESSION-HANDOFF: atlr.pro (Atelier Superintelligence site)
 
-Updated 30 Oct 2026, evening, the day of the TiECon Canada 2026 keynote. Second pass of the day: a full audit of the staged site from the buyer, investor and partner seats, with the fixes applied and pushed to staging.
+Updated 31 Oct 2026. Since the 30 Oct audit: the Materiality poster captions were removed (they covered the Canaccord Genuity and Verma marks on the covers), Sean was invited as a collaborator (write) on atlr-site and atlr-staging, and Sean's LinkedIn was added site-wide and to the temp deck.
 
 ## Canonical artifacts (edit these, nothing else)
 
@@ -48,7 +48,7 @@ Three fresh agent reads plus Lighthouse, link and structured-data checks. Full o
 4. **A Sprint price or band.** The site says "fixed price" without a number. Prolego publishes $80k per release; Neurons Lab "$20K to $50K" for short engagements. A band on /method/ and /contact/ would remove the first question every buyer emails.
 5. **Who owns the code.** The Trust page says the client owns its data and tuning, and that code ownership and the Conformer/Conduit licence are set in the SOW. AE Studio says "you own all the IP and code"; a plainer sentence needs a founder decision.
 6. **The bench.** "the engineers they have worked with for years" names no number. One sentence with a count and disciplines (Sean supplies).
-7. **Sean's LinkedIn and IMDb URLs** for /team/, the footer and the JSON-LD (only Michael has a sameAs today). Not found by search; Sean supplies.
+7. **Sean's IMDb URL** (and any other public profile) for his JSON-LD sameAs. His LinkedIn (https://www.linkedin.com/in/seanthomasevans/) came from Michael on 31 Oct and is now on /team/, /contact/, the footer, the Person node in every page's JSON-LD, and the live temp deck.
 8. **Materiality in the primary nav**, with its capital-allocation framing and disclaimer, on a consultancy site a board may be sent to. Option: footer and home section only.
 9. **Testimonials and vendor badges** (one attributed sentence each from Warner/Lanois, Design Exchange, the platform; Anthropic/AWS/Azure partner listings) are the two benchmark patterns that need material that does not exist yet.
 10. **Verify before the flip:** Sean's "28 years" (his public bios say over 25), "co-founder" of Occupied VR, the Samsung client line, Viveport, the Eagle digital-production credit, the Academy of Digital Arts and Sciences membership, CES and SXSW as stages (dates pending in the bio facts), the DX system's name "Athena" and whether it is still in use, the nine US tour rooms, the Kawartha spot URL. All are Sean's or Michael's own wording; none has a public receipt yet.
