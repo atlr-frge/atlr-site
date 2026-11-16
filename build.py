@@ -82,6 +82,9 @@ def graph_for(meta, canonical):
 
 def page_lastmod(src_file):
     try:
+        dirty = subprocess.check_output(['git', 'status', '--porcelain', '--', src_file], cwd=ROOT, text=True).strip()
+        if dirty:
+            return datetime.date.today().isoformat()
         out = subprocess.check_output(['git', 'log', '-1', '--format=%cs', '--', src_file], cwd=ROOT, text=True).strip()
         if out:
             return out

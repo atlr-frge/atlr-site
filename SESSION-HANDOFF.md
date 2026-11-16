@@ -13,7 +13,7 @@ Updated 16 Nov 2026. **The full site is live at https://atlr.pro** (Michael's go
 | Holding page | `src/static/holding/index.html` (served at /holding/) | The one-screen page from the first hour; kept for the record |
 | Brand source | `~/workspace/atelier-intro-v7/index.html` | site.css is a port of its stylesheet plus additions |
 | Copy gate | `~/workspace/atelier-doc-system/skills/atelier-proposal/scripts/slop-gate.py` | Run on extracted copy (see Process) |
-| Fonts | `src/assets/fonts/*.woff2` + `fonts.css` (latin subsets, OFL) | Self-hosted; the @font-face rules are prepended to site.css. No Google Fonts request remains. |
+| Fonts | `src/assets/fonts/` four variable woff2 (cormorant-garamond, cormorant-garamond-italic, dm-sans, jetbrains-mono; latin subsets, OFL) + `fonts.css` | Self-hosted; one @font-face per family and style with a weight range; the same four rules are prepended to site.css; three preloads in layout. No Google Fonts request anywhere, the holding page included (fixed 16 Nov). |
 
 ## State
 
@@ -73,11 +73,11 @@ curl -sI https://atlr.pro/ | head -3
 
 Token dance: `TOKEN=$(gh auth token); git push "https://x-access-token:${TOKEN}@github.com/atlr-frge/<repo>.git" main; unset TOKEN` (the token never enters .git/config this way).
 
-**After the flip (16 Nov):** (1) **OPEN: FormSubmit activation.** One test submission from https://atlr.pro/contact/ sends the one-time activation email to hello@atlr.pro; Michael clicks Activate. Until then FormSubmit holds submissions for 30 days. Not done yet because it is a form submission to a third party, which needs Michael's word; the mailto links work regardless. Do not activate from staging. (2) site-qa run on https://atlr.pro, see Next. (3) Done: `~/.claude/CLAUDE.md` canonical table and the `atelier-site` memory say live. (4) Done: aiimaginelabs' technology page links to https://atlr.pro (its build.py llms.txt line still names the v7 deck URL as the intro deck, which is still published).
+**After the flip (16 Nov), all done:** (1) **FormSubmit is active.** A test submission went from https://atlr.pro/contact/ at Michael's word; FormSubmit's Action Required email reached hello@atlr.pro at 13:09 ET, Michael activated (FormSubmit's site was throwing Cloudflare 522/525 for a while, the click eventually took), and the held test enquiry was delivered at 13:14 ET as a table with the `_subject` "atlr.pro: a new enquiry". Real enquiries now arrive at hello@ and the sender lands on /thanks/. (2) site-qa ran on the live site: no deploy-breakers; its eight polish items were applied the same afternoon (Materiality share card regenerated from covers 03/04/05; sitemap lastmod now reads today for uncommitted sources; holding page on the self-hosted fonts; architecture diagram min-width 760 px so its labels are legible on a phone; four variable font files instead of fifteen copies; the "four systems" sentence on the home and Method pages now matches the four Work rows; the TV row label no longer says "In production"; the open mobile menu pins the body so iOS stops scrolling behind it). Left as notes: "Weeks 02–12" keeps its en dash as a range; the hero swarm image is light trails, not flame. (3) `~/.claude/CLAUDE.md` canonical table and the `atelier-site` memory say live. (4) aiimaginelabs' technology page links to https://atlr.pro (its build.py llms.txt line still names the v7 deck URL as the intro deck, which is still published).
 
 ## Next
 
-- WhatsApp note to Sean: the site is live, he has write access to both repos, decisions 1 to 10 above are his to tweak in place (edit src/, run the flip command, push).
-- FormSubmit activation (one test submission from the live contact page, then Michael clicks Activate).
+- WhatsApp note to Sean: the site is live, he has write access to both repos, decisions 1 to 10 above are his to tweak in place (edit src/, commit, run the flip command, commit docs, push). **Commit src/ before building** so the sitemap lastmod is right (build.py now also treats a dirty source as changed today).
+- Materiality share card (`src/assets/img/og-materiality.jpg`) is the latest three covers and ages weekly with the page; regenerate it with the Tuesday episode or make an evergreen card.
 - Keep staging (atlr-frge.github.io/atlr-staging/) in step or retire it now that production is live; it was rebuilt alongside the flip (ec07654).
 - Later: an OG image with the wordmark (today's og-default.jpg is a brand-safe crop with no text); a Writing page gathering Materiality and the Mashup under atlr.pro if an email capture is wanted; a terms page if the form ever takes anything beyond an enquiry.
