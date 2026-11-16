@@ -10,17 +10,29 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 
   if (toggle) {
+    // iOS Safari ignores overflow:hidden on body, so the open menu pins the body and restores the scroll position on close.
+    var lockY = 0;
+    function openMenu() {
+      lockY = window.scrollY;
+      body.style.top = -lockY + 'px';
+      body.classList.add('menu-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu() {
+      if (!body.classList.contains('menu-open')) return;
+      body.classList.remove('menu-open');
+      body.style.top = '';
+      window.scrollTo(0, lockY);
+      toggle.setAttribute('aria-expanded', 'false');
+    }
     toggle.addEventListener('click', function () {
-      var open = body.classList.toggle('menu-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (body.classList.contains('menu-open')) closeMenu(); else openMenu();
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && body.classList.contains('menu-open')) {
-        body.classList.remove('menu-open'); toggle.setAttribute('aria-expanded', 'false'); toggle.focus();
-      }
+      if (e.key === 'Escape' && body.classList.contains('menu-open')) { closeMenu(); toggle.focus(); }
     });
     document.querySelectorAll('#navLinks a').forEach(function (a) {
-      a.addEventListener('click', function () { body.classList.remove('menu-open'); toggle.setAttribute('aria-expanded', 'false'); });
+      a.addEventListener('click', closeMenu);
     });
   }
 
