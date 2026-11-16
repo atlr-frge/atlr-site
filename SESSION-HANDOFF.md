@@ -1,6 +1,6 @@
 # SESSION-HANDOFF: atlr.pro (Atelier Superintelligence site)
 
-Updated 31 Oct 2026. Since the 30 Oct audit: the Materiality poster captions were removed (they covered the Canaccord Genuity and Verma marks on the covers), Sean was invited as a collaborator (write) on atlr-site and atlr-staging, and Sean's LinkedIn was added site-wide and to the temp deck.
+Updated 16 Nov 2026. **The full site is live at https://atlr.pro** (Michael's go on 16 Nov: "make the shift, Sean can tweak as needed once live"). Between the 30 Oct audit and the flip: Materiality poster captions removed (they covered the Canaccord Genuity and Verma marks), Sean invited as a collaborator (write) on atlr-site and atlr-staging, Sean's LinkedIn added site-wide, and Materiality brought up to date on the day of the flip.
 
 ## Canonical artifacts (edit these, nothing else)
 
@@ -8,7 +8,7 @@ Updated 31 Oct 2026. Since the 30 Oct audit: the Materiality poster captions wer
 |---|---|---|
 | Site source | `src/` (layout.html, css/site.css, js/site.js, pages/*.html, assets/img, assets/fonts) | Pages carry a `<!--meta {...}-->` header read by build.py; `preload` in the meta adds image preloads |
 | Build script | `build.py` | Commands in the docstring; no defaults, pass `--base --origin --out` |
-| Live output | `docs/` on `main` (GitHub Pages main:/docs, CNAME atlr.pro) | TODAY this holds the **temp site** (the v7 deck), not a build of src/ |
+| Live output | `docs/` on `main` (GitHub Pages main:/docs, CNAME atlr.pro) | The production build of src/ since 16 Nov 2026 (commit cfc7f1d). Rebuild with the flip command below after any src/ change; never `--staging` into docs |
 | Staging output | `../atlr-staging/` (repo atlr-frge/atlr-staging, Pages from main root) | https://atlr-frge.github.io/atlr-staging/ (noindex, robots Disallow) |
 | Holding page | `src/static/holding/index.html` (served at /holding/) | The one-screen page from the first hour; kept for the record |
 | Brand source | `~/workspace/atelier-intro-v7/index.html` | site.css is a port of its stylesheet plus additions |
@@ -19,7 +19,8 @@ Updated 31 Oct 2026. Since the 30 Oct audit: the Materiality poster captions wer
 
 - **DNS:** atlr.pro points at GitHub Pages (A 185.199.108/109/110/111.153, www CNAME atlr-frge.github.io), changed in GoDaddy at about 16:00 ET on 30 Oct with Michael's go. MX, SPF, DMARC, DKIM, site-verification TXT untouched.
 - **HTTPS:** live and enforced. GitHub's certificate needed a remove/re-add of the custom domain through the API (`PUT .../pages` with `{"cname":null}` then `{"cname":"atlr.pro"}`); it approved within a minute. GitHub committed "Delete CNAME" / "Create CNAME" on main during that nudge, so pull before pushing from another checkout.
-- **What visitors see now:** the Intro v7 deck as a one-page temp site (Michael's call). Evening fix: the page had no og:image, so LinkedIn and WhatsApp previews of atlr.pro were bare on keynote day; `docs/images/og-default.jpg` and the tags were added (commit d596d12). Michael's deck bio line carried claims outside the bio facts ("Built and exited 7 companies", "Ran Deloitte's Novel & Exponential Tech group", "$500M", "MIT") and was replaced with the facts-only line used on the full site. Sean's deck line is his own wording and was left as is.
+- **What visitors see now:** the full site. The v7 deck served as the temp page from 30 Oct to 16 Nov (with an og:image and a facts-only bio line added on 30 Oct); it is still published at https://atlr-frge.github.io/atelier-intro-v7/ and the old `/images/og-default.jpg` path no longer exists (the site's share image is `/assets/img/og-default.jpg`). Verified on 16 Nov after the push: every page, the sitemap, robots, llms.txt and the holding page return 200, www and http both 301 to https://atlr.pro/, no noindex on indexable pages.
+- **Materiality, 16 Nov:** /materiality/ lists No. 01 to 05 with Al Verma's posts for 04 (Robots) and 05 (Nvidia), covers 04 and 05 converted from the aiimaginelabs posters (506 x 900 webp, marks visible), and No. 06 Power as the dashed next card dated Tuesday 17 November. The home strip and the page strip show the latest three frames (03, 04, 05). **Each Tuesday the page needs the new episode** (copy, cover, Al's URL from aiimaginelabs' materiality page) and the next card moved on; No. 06 is due 17 Nov.
 - **Full site, after the audit:** eight indexable pages: / (deck spine refreshed, Sprint defined under the hero, proof line beneath it, five controls, selected work, team, Materiality), /work/ (four number-led cards, seventeen systems in five groups with anchors, state key without "Live", Conformer and Conduit, controls), /method/, /team/ (long bios with receipts linked), /materiality/, /contact/ (Sprint checklist, NDA line, FormSubmit form, partner section), /trust/ (ten answers for a model-risk team), /privacy/; plus /thanks/ (noindex, the form's landing) and 404.
 - **Copy gate:** all pages pass; the only hit is "bespoke" in the positioning line, the accepted exception.
 - **Lighthouse (live staging, like for like, before → after):** home mobile 82 → 98 (LCP 4.6 s → 2.4 s), home desktop 97 → 99, work mobile 98 → 100; accessibility 96 → 100 on every page; best practices 100. SEO reads 66 on staging only because of the noindex; the production dry run has no noindex. What moved it: fonts self-hosted and preloaded (the Google Fonts CSS was render-blocking for up to 970 ms), hero image preloaded with a 1080 px variant for phones, grey text token raised from #555 (2.65:1) to #808080 (5.0:1), dark ink instead of white for small text and buttons on Ember (5.7:1 instead of 3.5:1), focus rings added, contact heading order fixed.
@@ -52,7 +53,7 @@ Three fresh agent reads plus Lighthouse, link and structured-data checks. Full o
 8. **Materiality in the primary nav**, with its capital-allocation framing and disclaimer, on a consultancy site a board may be sent to. Option: footer and home section only.
 9. **Testimonials and vendor badges** (one attributed sentence each from Warner/Lanois, Design Exchange, the platform; Anthropic/AWS/Azure partner listings) are the two benchmark patterns that need material that does not exist yet.
 10. **Verify before the flip:** Sean's "28 years" (his public bios say over 25), "co-founder" of Occupied VR, the Samsung client line, Viveport, the Eagle digital-production credit, the Academy of Digital Arts and Sciences membership, CES and SXSW as stages (dates pending in the bio facts), the DX system's name "Athena" and whether it is still in use, the nine US tour rooms, the Kawartha spot URL. All are Sean's or Michael's own wording; none has a public receipt yet.
-11. **On 3 Nov:** swap the No. 04 card on /materiality/ from the dashed "next" card to a linked episode. Materiality No. 03 links to Michael's post; if Al posted it too, link Al's.
+11. **Weekly:** turn the dashed next card on /materiality/ into a linked episode each Tuesday (No. 06 on 17 Nov), add the cover, move the strips on. Source: aiimaginelabs `src/pages/materiality.html` and `assets/img/materiality/`.
 
 ## Process (repeatable)
 
@@ -72,10 +73,11 @@ curl -sI https://atlr.pro/ | head -3
 
 Token dance: `TOKEN=$(gh auth token); git push "https://x-access-token:${TOKEN}@github.com/atlr-frge/<repo>.git" main; unset TOKEN` (the token never enters .git/config this way).
 
-**After the flip, in this order:** (1) submit one test from https://atlr.pro/contact/; FormSubmit ties activation to the origin, so this sends a one-time activation email to hello@atlr.pro; Michael clicks Activate (submissions are held 30 days until then; do not activate from staging, it would not carry over). (2) `site-qa` on https://atlr.pro. (3) Update the canonical table in `~/.claude/CLAUDE.md` (live column) and the `atelier-site` memory. (4) Point the aiimaginelabs links to the Atelier deck at https://atlr.pro (noted in the aiimaginelabs handoff).
+**After the flip (16 Nov):** (1) **OPEN: FormSubmit activation.** One test submission from https://atlr.pro/contact/ sends the one-time activation email to hello@atlr.pro; Michael clicks Activate. Until then FormSubmit holds submissions for 30 days. Not done yet because it is a form submission to a third party, which needs Michael's word; the mailto links work regardless. Do not activate from staging. (2) site-qa run on https://atlr.pro, see Next. (3) Done: `~/.claude/CLAUDE.md` canonical table and the `atelier-site` memory say live. (4) Done: aiimaginelabs' technology page links to https://atlr.pro (its build.py llms.txt line still names the v7 deck URL as the intro deck, which is still published).
 
 ## Next
 
-- WhatsApp note to Sean with the staging URL and decisions 1 to 3 (sean-note skill).
-- After sign-off: the flip and the four steps above.
+- WhatsApp note to Sean: the site is live, he has write access to both repos, decisions 1 to 10 above are his to tweak in place (edit src/, run the flip command, push).
+- FormSubmit activation (one test submission from the live contact page, then Michael clicks Activate).
+- Keep staging (atlr-frge.github.io/atlr-staging/) in step or retire it now that production is live; it was rebuilt alongside the flip (ec07654).
 - Later: an OG image with the wordmark (today's og-default.jpg is a brand-safe crop with no text); a Writing page gathering Materiality and the Mashup under atlr.pro if an email capture is wanted; a terms page if the form ever takes anything beyond an enquiry.
