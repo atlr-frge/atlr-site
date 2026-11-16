@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trust | Where it runs, what is logged, who approves | Atelier Superintelligence</title>
+<meta name="description" content="The questions a security, privacy or model-risk team asks before an Atelier build: where the system runs, which models, what happens to personal information, what is logged, who approves what goes out, and what ships for model risk.">
+<link rel="canonical" href="https://atlr.pro/trust/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Trust | Where it runs, what is logged, who approves | Atelier Superintelligence">
+<meta property="og:description" content="The questions a security, privacy or model-risk team asks before an Atelier build: where the system runs, which models, what happens to personal information, what is logged, who approves what goes out, and what ships for model risk.">
+<meta property="og:image" content="https://atlr.pro/assets/img/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://atlr.pro/trust/">
+<meta property="og:site_name" content="Atelier Superintelligence">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0A0A0A">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/cormorant-garamond-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=c371f943">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://atlr.pro/#organization","name":"Atelier Superintelligence","url":"https://atlr.pro/","email":"hello@atlr.pro","description":"Bespoke agentic systems. Deep context. Real integrations. Results that compound.","logo":{"@type":"ImageObject","url":"https://atlr.pro/assets/img/og-default.jpg","width":1200,"height":630},"address":{"@type":"PostalAddress","addressLocality":"Toronto","addressRegion":"ON","addressCountry":"CA"},"founder":[{"@id":"https://atlr.pro/team/#michael"},{"@id":"https://atlr.pro/team/#sean"}],"contactPoint":{"@type":"ContactPoint","email":"hello@atlr.pro","contactType":"sales","availableLanguage":"en"},"knowsAbout":["agentic systems","AI agents","financial crime compliance","media pipelines","generative production"]},{"@type":"WebSite","@id":"https://atlr.pro/#website","url":"https://atlr.pro/","name":"Atelier Superintelligence","publisher":{"@id":"https://atlr.pro/#organization"},"inLanguage":"en"},{"@type":"Person","@id":"https://atlr.pro/team/#michael","name":"Michael Chase","jobTitle":"Co-founder, strategy and adoption","worksFor":{"@id":"https://atlr.pro/#organization"},"sameAs":["https://www.linkedin.com/in/chasemichael/","https://www.aiimaginelabs.com/about/"],"url":"https://atlr.pro/team/#michael"},{"@type":"Person","@id":"https://atlr.pro/team/#sean","name":"Sean Evans","jobTitle":"Co-founder, engineering and production","worksFor":{"@id":"https://atlr.pro/#organization"},"sameAs":["https://www.linkedin.com/in/seanthomasevans/"],"url":"https://atlr.pro/team/#sean"},{"@type":"WebPage","@id":"https://atlr.pro/trust/#webpage","url":"https://atlr.pro/trust/","name":"Trust | Where it runs, what is logged, who approves | Atelier Superintelligence","description":"The questions a security, privacy or model-risk team asks before an Atelier build: where the system runs, which models, what happens to personal information, what is logged, who approves what goes out, and what ships for model risk.","isPartOf":{"@id":"https://atlr.pro/#website"},"about":{"@id":"https://atlr.pro/#organization"},"inLanguage":"en"},{"@type":"BreadcrumbList","@id":"https://atlr.pro/trust/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://atlr.pro/"},{"@type":"ListItem","position":2,"name":"Trust","item":"https://atlr.pro/trust/"}]}]}</script>
+
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+<nav class="nav" id="nav" aria-label="Primary">
+  <a href="/" class="nav-logo" aria-label="Atelier Superintelligence home">ATELIER <span>/</span> SUPERINTELLIGENCE</a>
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span class="bars"></span></button>
+  <div class="nav-right" id="navLinks">
+    <ul class="nav-links">
+      <li><a href="/work/" >Work</a></li>
+      <li><a href="/method/" >Method</a></li>
+      <li><a href="/team/" >Team</a></li>
+      <li><a href="/materiality/" >Materiality</a></li>
+      <li><a href="/contact/" >Contact</a></li>
+    </ul>
+    <a href="/contact/" class="nav-cta">Start with a Sprint &rarr;</a>
+  </div>
+</nav>
+
+<main id="main">
+<header class="page-hero">
+  <span class="label reveal">Trust</span>
+  <h1 class="page-title reveal">The questions a model-risk team <em>asks first.</em></h1>
+  <p class="page-lede reveal">Short answers, each backed by one of the <a href="/work/#controls">five controls</a> that run on every build. Where an answer is set per engagement, it says so.</p>
+</header>
+
+<section class="section" style="padding-top:0">
+  <div class="inner">
+    <div class="controls stagger-children">
+      <div class="control-row"><div class="control-name"><small>01</small>Where does it run?</div><div class="control-desc"><p>Inside your cloud tenant, on the models you approve. A Sprint runs in a demo environment on Atelier&rsquo;s cloud, on synthetic data unless you choose otherwise, so a prototype can exist before data access is approved.</p></div></div>
+      <div class="control-row"><div class="control-name"><small>02</small>Which models, and where?</div><div class="control-desc"><p>The ones on your allow-list. Routing is restricted in code to approved regions, Canadian regions where the work requires it, and the cost of each run is recorded where the provider reports it.</p></div></div>
+      <div class="control-row"><div class="control-name"><small>03</small>What happens to personal information?</div><div class="control-desc"><p>It is tokenised before any model call. In the financial-crime work no member data was needed to build or benchmark the detectors; a synthetic population with criminal typologies seeded in stood in for it.</p></div></div>
+      <div class="control-row"><div class="control-name"><small>04</small>What is logged?</div><div class="control-desc"><p>Every model call and every human decision, written to a hash-chained audit record. Each generated output keeps its model, prompt and settings, and each accept or reject is logged with who and when.</p></div></div>
+      <div class="control-row"><div class="control-name"><small>05</small>Who approves what goes out?</div><div class="control-desc"><p>A person, by one route only: the draft they edit and approve. When the system&rsquo;s confidence falls below the threshold you set, it stops and escalates rather than guessing, and the reason is logged for the reviewer.</p></div></div>
+      <div class="control-row"><div class="control-name"><small>06</small>How are releases controlled?</div><div class="control-desc"><p>Every release passes automated tests and a health check before it rolls out. Every delivery is a new numbered package, cut by a script that refuses to overwrite, with every copy checked by SHA-256.</p></div></div>
+      <div class="control-row"><div class="control-name"><small>07</small>How is our work kept apart from other clients&rsquo;?</div><div class="control-desc"><p>One instance per client or production, with its own database, storage and login. Inputs are hash-checked against their source, and review sites decrypt only in the viewer&rsquo;s browser.</p></div></div>
+      <div class="control-row"><div class="control-name"><small>08</small>What do we get for model risk?</div><div class="control-desc"><p>An evidence pack assembled from these records ships with every engagement, for whoever owns model risk. Before go-live at an institution, the system runs against that institution&rsquo;s own filed records and the miss rate goes to the person who owns the outcome.</p></div></div>
+      <div class="control-row"><div class="control-name"><small>09</small>Who owns what is built?</div><div class="control-desc"><p>You own your data and the tuning built on it. Ownership of the code written for you, and the licence under which Atelier&rsquo;s own engine, Conformer and Conduit, is brought into a job, are set in the statement of work before the first hour.</p></div></div>
+      <div class="control-row"><div class="control-name"><small>10</small>Who does the work, and under what terms?</div><div class="control-desc"><p>The two founders and the engineers and artists they have shipped with before, scaled to the scope, all under the confidentiality terms of the engagement. We sign your NDA, or ours, before the brief.</p></div></div>
+    </div>
+    <p class="body-text reveal" style="margin-top:2.5rem">What this website itself collects is on the <a href="/privacy/" class="link">Privacy page</a>. Anything not answered here goes to <a href="mailto:hello@atlr.pro?subject=Trust%20questions" class="link">hello@atlr.pro</a>.</p>
+  </div>
+</section>
+
+<div class="close-section" id="contact">
+  <span class="close-label">Here&rsquo;s how it starts</span>
+  <h2 class="close-headline">Most engagements begin<br>with a Sprint.</h2>
+  <p class="close-sub">One week, one system, running on your workflow. You see it working before anything else is on the table.</p>
+  <div class="close-ctas">
+    <a href="/contact/" class="btn-dark">Start with a Sprint &rarr;</a>
+    <a href="mailto:hello@atlr.pro" class="close-email">hello@atlr.pro</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">ATELIER <span>/</span> SUPERINTELLIGENCE</div>
+      <p class="footer-line">Bespoke agentic systems. Deep context. Real integrations. Results that compound.</p>
+      <p class="footer-place">Toronto, Canada</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-h">Site</p>
+      <ul>
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/method/">Method</a></li>
+        <li><a href="/team/">Team</a></li>
+        <li><a href="/materiality/">Materiality</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/trust/">Trust</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-h">Elsewhere</p>
+      <ul>
+        <li><a href="mailto:hello@atlr.pro">hello@atlr.pro</a></li>
+        <li><a href="https://www.linkedin.com/in/chasemichael/" rel="noopener">Michael Chase on LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/seanthomasevans/" rel="noopener">Sean Evans on LinkedIn</a></li>
+        <li><a href="https://www.aiimaginelabs.com/materiality/" rel="noopener">Materiality at AI Imagine Labs</a></li>
+        <li><a href="https://www.aiimaginelabs.com/" rel="noopener">AI Imagine Labs</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Atelier Superintelligence Inc.</span>
+    <span>atlr.pro</span>
+  </div>
+</footer>
+<script src="/assets/js/site.js?v=c371f943" defer></script>
+</body>
+</html>

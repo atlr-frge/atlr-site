@@ -1,0 +1,18 @@
+# Atelier Superintelligence
+
+> Bespoke agentic systems. Deep context. Real integrations. Results that compound.
+
+Atelier Superintelligence is a Toronto workshop that builds agentic systems inside a client's own cloud: agents that reason, keep memory and carry skills, working with autonomy under human oversight, with the points where people step in designed from the start. Founded by Michael Chase (strategy and adoption) and Sean Evans (engineering and production). Method: FORGE (Learn, Build, Prove, Stay). Contact: hello@atlr.pro.
+
+## Pages
+- Home: https://atlr.pro/
+- Work: https://atlr.pro/work/ (selected systems 2024 to 2026 and the controls on every job)
+- Method: https://atlr.pro/method/ (the Forge Sprint and the four moves)
+- Team: https://atlr.pro/team/
+- Materiality: https://atlr.pro/materiality/ (the weekly series on AI with Verma Private Wealth at Canaccord Genuity, hosted by Michael Chase)
+- Contact: https://atlr.pro/contact/
+
+## Facts
+- Domains of work: financial crime, network television, music, film, a projection venue, a weekly series on AI.
+- Five controls on every build: validation before use, human approval, an audit record, release control, data protection.
+- Michael Chase hosts Materiality (https://www.aiimaginelabs.com/materiality/) and writes the Monday Morning Mashup (https://www.aiimaginelabs.com/blog/).
