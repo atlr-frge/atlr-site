@@ -14,5 +14,6 @@ Atelier Superintelligence is a Toronto workshop that builds agentic systems insi
 
 ## Facts
 - Domains of work: financial crime, network television, music, film, a projection venue, a weekly series on AI.
+- Network television: Billy Bob Thornton Presents: The Mayflower (Fox Nation, three one-hour episodes from 23 November 2026): pipeline support, seven animated maps, QC, and the record tracing its 627 AI shots to their prompts and tools.
 - Five controls on every build: validation before use, human approval, an audit record, release control, data protection.
 - Michael Chase hosts Materiality (https://www.aiimaginelabs.com/materiality/) and writes the Monday Morning Mashup (https://www.aiimaginelabs.com/blog/).
