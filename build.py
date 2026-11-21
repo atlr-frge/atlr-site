@@ -40,7 +40,6 @@ POSITIONING = 'Bespoke agentic systems. Deep context. Real integrations. Results
 EMAIL = 'hello@atlr.pro'
 LINKEDIN_MICHAEL = 'https://www.linkedin.com/in/chasemichael/'
 LINKEDIN_SEAN = 'https://www.linkedin.com/in/seanthomasevans/'
-MATERIALITY_URL = 'https://www.aiimaginelabs.com/materiality/'
 
 layout = open(os.path.join(SRC, 'layout.html'), encoding='utf-8').read()
 
@@ -192,14 +191,14 @@ Atelier Superintelligence is a Toronto workshop that builds agentic systems insi
 - Work: {SITE}/work/ (selected systems 2024 to 2026 and the controls on every job)
 - Method: {SITE}/method/ (the Forge Sprint and the four moves)
 - Team: {SITE}/team/
-- Materiality: {SITE}/materiality/ (the weekly series on AI with Verma Private Wealth at Canaccord Genuity, hosted by Michael Chase)
+- Materiality: {SITE}/materiality/ (the weekly series on AI with Verma Private Wealth at Canaccord Genuity, hosted by Michael Chase; every episode plays on the page, served from this domain)
 - Contact: {SITE}/contact/
 
 ## Facts
 - Domains of work: financial crime, network television, music, film, a projection venue, a weekly series on AI.
 - Network television: Billy Bob Thornton Presents: The Mayflower (Fox Nation, three one-hour episodes from 23 November 2026): pipeline support, seven animated maps, QC, and the record tracing its 627 AI shots to their prompts and tools.
 - Five controls on every build: validation before use, human approval, an audit record, release control, data protection.
-- Michael Chase hosts Materiality ({MATERIALITY_URL}) and writes the Monday Morning Mashup (https://www.aiimaginelabs.com/blog/).
+- Michael Chase hosts Materiality ({SITE}/materiality/, six episodes since 13 October 2026, a new one every Tuesday) and writes the Monday Morning Mashup (https://www.aiimaginelabs.com/blog/).
 """
 write('/llms.txt', llms)
 print('built %d pages -> %s (base=%r origin=%s staging=%s v=%s)' % (len(pages), OUT, BASE, ORIGIN, args.staging, V))

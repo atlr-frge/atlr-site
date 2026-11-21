@@ -792,7 +792,13 @@ a { color: inherit; text-decoration: none; }
 
 /* materiality */
 .episode-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
-.episode { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 1.6rem 1.75rem; display: flex; flex-direction: column; gap: 0.6rem; transition: border-color 0.2s; }
+.episode { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem 1.6rem; display: flex; flex-direction: row; gap: 1.5rem; align-items: stretch; transition: border-color 0.2s; }
+.episode .ep-body { display: flex; flex-direction: column; gap: 0.6rem; flex: 1 1 auto; min-width: 0; }
+.episode .ep-frame { flex: 0 0 180px; width: 180px; aspect-ratio: 9 / 16; align-self: flex-start; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: #000; }
+.episode .ep-frame video { display: block; width: 100%; height: 100%; object-fit: cover; background: #000; }
+.episode .ep-frame-next { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; border-style: dashed; background: transparent; }
+.episode .ep-next-num { font-family: var(--font-display); font-size: 3rem; font-weight: 300; line-height: 1; color: var(--text-dim); }
+.episode .ep-next-when { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); }
 .episode:hover { border-color: var(--ember-border); }
 .episode .ep-num { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember); }
 .episode .ep-num span { color: var(--text-dim); }
@@ -801,6 +807,8 @@ a { color: inherit; text-decoration: none; }
 .episode p { font-size: 0.93rem; line-height: 1.6; color: var(--text-sec); }
 .episode .ep-link { margin-top: auto; padding-top: 0.6rem; font-size: 0.85rem; color: var(--text); }
 .episode .ep-link span { color: var(--ember); }
+.episode a.ep-link { text-decoration: none; transition: color 0.2s; }
+.episode a.ep-link:hover { color: var(--ember); }
 .episode.next { border-style: dashed; }
 .disclaimer { margin-top: 2.5rem; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.04em; line-height: 1.8; color: var(--text-dim); max-width: 78ch; }
 
@@ -878,6 +886,7 @@ a { color: inherit; text-decoration: none; }
 .poster-strip img { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; }
 .poster-strip.wide { max-width: 760px; margin: 2.5rem auto 0; }
 @media (max-width: 480px) { .poster-strip { gap: 0.5rem; } }
+@media (max-width: 600px) { .episode { flex-direction: column; gap: 1.1rem; } .episode .ep-frame { flex-basis: auto; width: 100%; max-width: 320px; } }
 
 /* four Forge moves: two by two */
 .forge-grid { grid-template-columns: repeat(2, 1fr); }
