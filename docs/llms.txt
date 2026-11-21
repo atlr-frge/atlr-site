@@ -9,11 +9,11 @@ Atelier Superintelligence is a Toronto workshop that builds agentic systems insi
 - Work: https://atlr.pro/work/ (selected systems 2024 to 2026 and the controls on every job)
 - Method: https://atlr.pro/method/ (the Forge Sprint and the four moves)
 - Team: https://atlr.pro/team/
-- Materiality: https://atlr.pro/materiality/ (the weekly series on AI with Verma Private Wealth at Canaccord Genuity, hosted by Michael Chase)
+- Materiality: https://atlr.pro/materiality/ (the weekly series on AI with Verma Private Wealth at Canaccord Genuity, hosted by Michael Chase; every episode plays on the page, served from this domain)
 - Contact: https://atlr.pro/contact/
 
 ## Facts
 - Domains of work: financial crime, network television, music, film, a projection venue, a weekly series on AI.
 - Network television: Billy Bob Thornton Presents: The Mayflower (Fox Nation, three one-hour episodes from 23 November 2026): pipeline support, seven animated maps, QC, and the record tracing its 627 AI shots to their prompts and tools.
 - Five controls on every build: validation before use, human approval, an audit record, release control, data protection.
-- Michael Chase hosts Materiality (https://www.aiimaginelabs.com/materiality/) and writes the Monday Morning Mashup (https://www.aiimaginelabs.com/blog/).
+- Michael Chase hosts Materiality (https://atlr.pro/materiality/, six episodes since 13 October 2026, a new one every Tuesday) and writes the Monday Morning Mashup (https://www.aiimaginelabs.com/blog/).
