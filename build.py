@@ -111,7 +111,7 @@ def render(body, meta):
     out = out.replace('{{HEAD_EXTRA}}', head_extra)
     out = out.replace('{{BODY_CLASS}}', meta.get('body_class', ''))
     out = out.replace('{{BODY}}', body)
-    for nav in ['home', 'work', 'method', 'team', 'materiality', 'contact']:
+    for nav in ['home', 'work', 'method', 'team', 'trust', 'materiality', 'contact']:
         out = out.replace('{{ACTIVE_%s}}' % nav, 'aria-current="page"' if meta.get('nav') == nav else '')
     out = out.replace('{{ORIGIN}}', ORIGIN).replace('{{BASE}}', BASE).replace('{{V}}', V).replace('{{YEAR}}', YEAR)
     if meta.get('no_canonical'):
@@ -180,11 +180,12 @@ else:
     write('/robots.txt', 'User-agent: *\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\nUser-agent: ClaudeBot\nAllow: /\nUser-agent: PerplexityBot\nAllow: /\n\nSitemap: %s/sitemap.xml\n' % SITE)
 
 # ---------- llms.txt ----------
+EPISODES = len(re.findall(r'"@type": "VideoObject"', open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src', 'pages', 'materiality.html'), encoding='utf-8').read()))
 llms = f"""# {ORG_NAME}
 
 > {POSITIONING}
 
-Atelier Superintelligence is a Toronto workshop that builds agentic systems inside a client's own cloud: agents that reason, keep memory and carry skills, working with autonomy under human oversight, with the points where people step in designed from the start. Founded by Michael Chase (strategy and adoption) and Sean Evans (engineering and production). Method: FORGE (Learn, Build, Prove, Stay). Contact: {EMAIL}.
+Atelier Superintelligence is a Toronto workshop that builds agentic systems inside a client's own cloud: agents that hold the client's documents and rules as context, draft the work with the evidence attached, and stop to ask when their confidence is low, with the points where people step in designed from the start. Founded by Michael Chase (strategy and adoption) and Sean Evans (engineering and production). Method: Forge (Learn, Build, Prove, Stay). Contact: {EMAIL}.
 
 ## Pages
 - Home: {SITE}/
@@ -192,13 +193,14 @@ Atelier Superintelligence is a Toronto workshop that builds agentic systems insi
 - Method: {SITE}/method/ (the Forge Sprint and the four moves)
 - Team: {SITE}/team/
 - Materiality: {SITE}/materiality/ (the weekly series on AI with Verma Private Wealth at Canaccord Genuity, hosted by Michael Chase; every episode plays on the page, served from this domain)
+- Trust: {SITE}/trust/ (where it runs, what is logged, who approves, what ships for model risk)
 - Contact: {SITE}/contact/
 
 ## Facts
 - Domains of work: financial crime, network television, music, film, a projection venue, a weekly series on AI.
 - Network television: Billy Bob Thornton Presents: The Mayflower (Fox Nation, three one-hour episodes from 23 November 2026): pipeline support, seven animated maps, QC, and the record tracing its 627 AI shots to their prompts and tools.
 - Five controls on every build: validation before use, human approval, an audit record, release control, data protection.
-- Michael Chase hosts Materiality ({SITE}/materiality/, six episodes since 13 October 2026, a new one every Tuesday) and writes the Monday Morning Mashup (https://www.aiimaginelabs.com/blog/).
+- Michael Chase hosts Materiality ({SITE}/materiality/, {EPISODES} episodes since 13 October 2026, a new one every Tuesday) and writes the Monday Morning Mashup (https://www.aiimaginelabs.com/blog/).
 """
 write('/llms.txt', llms)
 print('built %d pages -> %s (base=%r origin=%s staging=%s v=%s)' % (len(pages), OUT, BASE, ORIGIN, args.staging, V))

@@ -59,7 +59,7 @@
     function run() {
       var i = 0;
       function step() {
-        if (i >= lines.length) { setTimeout(function () { lines.forEach(function (l) { l.style.opacity = 0; }); run(); }, 5000); return; }
+        if (i >= lines.length) { return; }
         lines[i].style.transition = 'opacity 0.25s'; lines[i].style.opacity = 1; i++;
         setTimeout(step, i === 1 ? 300 : 420);
       }
@@ -70,4 +70,12 @@
     }, { threshold: 0.3 });
     tio.observe(term);
   }
+  // Episode players: the cover stays clean until the first play.
+  Array.prototype.forEach.call(document.querySelectorAll('.ep-frame video[controls]'), function (v) {
+    v.removeAttribute('controls');
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'ep-play';
+    b.setAttribute('aria-label', 'Play ' + (v.getAttribute('aria-label') || 'the episode'));
+    v.parentNode.appendChild(b);
+    b.addEventListener('click', function () { v.controls = true; b.remove(); v.play(); });
+  });
 })();
