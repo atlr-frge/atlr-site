@@ -986,3 +986,81 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ember-glow); ou
 @media (max-width: 640px) { .form button { width: 100%; justify-content: center; padding: 1rem; } }
 @media (max-width: 600px) { .bio-card-with-photo .bio-content { flex-direction: column; } }
 @media (max-width: 480px) { .nav-logo { font-size: 0.6rem; letter-spacing: 0.14em; } .hero-ctas a { flex: 1 1 100%; justify-content: center; } }
+
+/* ---------- 24 Nov 2026 deck pass: flat ground, rules not boxes, orange on numerals ---------- */
+.section-lifted, .arch-section, .forge-section { background: var(--bg); border-bottom: 0; }
+.forge-section::before { display: none; }
+.forge-section { padding: 6rem var(--pad-x); }
+.hero-bg { opacity: 0.45; filter: saturate(0.85); }
+.hero-bg-overlay { background: radial-gradient(ellipse at 40% 50%, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.88) 70%); }
+.card-item, .feature, .forge-card, .forge-card-sprint, .stat-card, .bio-card-with-photo, .terminal-block, .btn-primary, .btn-ghost, .btn-dark, .nav-cta, .nav-toggle, .work-figure img, .feature figure img, .bio-long figure img, .episode, .episode .ep-frame, .poster-strip a, .field input, .field select, .field textarea, .close-phase-row, .work-state b, .controls-line span { border-radius: 0; }
+.btn-primary:hover, .btn-dark:hover, .nav-cta:hover { transform: none; }
+.label, .hero-eyebrow, .work-group, .bio-long .role, .bio-card-with-photo .bio-role, .episode .ep-num, .control-name small { color: var(--text-dim); }
+.hero-rule { background: var(--seam); }
+.forge-card .num, .forge-card-sprint .num, .stat-card .val, .episode .ep-next-num { color: var(--ember); }
+.card-item { border: 0; border-top: 1px solid var(--border); background: transparent; }
+.card-item .accent { display: none; }
+.card-item .c-inner { padding: 1.1rem 0 0.4rem; }
+.card-item .card-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; line-height: 1.15; margin-bottom: 0.45rem; }
+.card-stack { gap: 0.9rem; }
+.feature { background: #111111; border: 0; padding: 1.75rem 1.75rem 1.9rem; }
+.feature::before { display: none; }
+.stat-row { gap: 2.5rem; }
+.stat-card { background: transparent; border: 0; border-top: 1px solid var(--border); text-align: left; padding: 1.25rem 0 0; }
+.stat-card .val { font-size: 3.6rem; font-weight: 300; letter-spacing: -0.02em; }
+.stat-card .stat-label { margin-top: 0.7rem; }
+.stat-row.four .stat-card { flex: 1 1 0; min-width: 0; }
+.forge-card-sprint { background: transparent; border: 0; border-top: 1px solid var(--ember); padding: 1.5rem 0 0; gap: 2rem; }
+.forge-card-sprint .fnote { color: var(--text-sec); }
+.forge-grid { grid-template-columns: repeat(4, 1fr); gap: 2.5rem; margin-top: 2.5rem; }
+.forge-card { background: transparent; border: 0; border-top: 1px solid var(--border); padding: 1.25rem 0 0; }
+.forge-card:hover, .card-item:hover, .episode:hover, .poster-strip a:hover { border-color: var(--border); }
+.forge-card .num, .forge-card-sprint .num { font-size: 1.6rem; }
+.bio-card-with-photo { background: transparent; border: 0; border-top: 1px solid var(--border); }
+.bio-card-with-photo .bio-accent { display: none; }
+.bio-card-with-photo .bio-content { padding: 1.4rem 0 1.6rem; }
+.terminal-block { background: #0e0e0e; border: 1px solid var(--border); box-shadow: none; }
+.terminal-bar { background: transparent; border-bottom: 1px solid var(--border); padding: 0.7rem 1.4rem; }
+.t-dot { display: none; }
+.terminal-title-bar { margin-left: 0; }
+.arch-node { fill: #111111; stroke: #2a2a2a; }
+.arch-node-c { fill: #121212; stroke: #E85D04; stroke-width: 1; }
+.arch-chip { fill: #1a1a1a; stroke: #2e2e2e; }
+.arch-line-in, .arch-line-out { stroke: #4a4a4a; stroke-width: 1; stroke-dasharray: none; }
+.controls-line { gap: 0 1.6rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0.9rem 0; margin-top: 2rem; }
+.controls-line span { border: 0; padding: 0; }
+.work-state b { border-color: var(--seam); background: transparent; }
+.episode { background: transparent; border: 0; border-top: 1px solid var(--border); padding: 1.5rem 0 1.6rem; }
+.episode .ep-frame { border-color: var(--border); }
+.episode-grid { gap: 0 3rem; margin-top: 2rem; }
+.poster-strip a { border: 0; }
+.work-figure img, .feature figure img, .bio-long figure img { border: 0; }
+.close-section { background: var(--bg); border-top: 1px solid var(--border); text-align: left; padding: 6rem var(--pad-x); }
+.close-section .inner { max-width: var(--max-w); margin: 0 auto; }
+.close-label { color: var(--text-dim); }
+.close-headline { color: var(--text); font-size: clamp(2.4rem, 4.5vw, 3.8rem); }
+.close-sub { color: var(--text-sec); margin: 1.5rem 0 0; max-width: 60ch; }
+.close-ctas { justify-content: flex-start; margin-top: 2.25rem; }
+.close-email { color: var(--text); border-bottom-color: var(--seam); }
+.close-email:hover { color: var(--ember); border-bottom-color: var(--ember); }
+.close-note { color: var(--text-dim); margin: 1.6rem 0 0; }
+.close-phases { margin-top: 3.5rem; }
+.close-phase-row { border: 0; max-width: none; margin: 0; gap: 2.5rem; }
+.close-phase { border-right: 0; border-top: 1px solid var(--border); text-align: left; padding: 1.1rem 0 0; }
+.close-phase:first-child { border-top-color: var(--ember); }
+.close-phase-num { color: var(--text-dim); }
+.close-phase-name { color: var(--text); font-size: 1.6rem; }
+.close-phase-time { color: var(--text-sec); }
+.close-section a:focus-visible { outline-color: var(--ember-glow); }
+@media (max-width: 900px) {
+  .forge-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .stat-row { gap: 1.25rem; }
+  .close-phase-row { flex-direction: column; gap: 0; }
+  .close-phase { border-top: 1px solid var(--border); border-bottom: 0; padding: 1.1rem 0 1.25rem; }
+  .close-phase:first-child { border-top-color: var(--ember); }
+  .episode-grid { gap: 0; }
+}
+@media (max-width: 600px) {
+  .forge-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+  .close-section { padding: 4rem var(--pad-x); }
+}
