@@ -1064,8 +1064,3 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ember-glow); ou
   .forge-grid { grid-template-columns: 1fr; gap: 0.5rem; }
   .close-section { padding: 4rem var(--pad-x); }
 }
-
-/* ---------- 24 Nov 2026, late: Work figures sit on the row grid (Michael: everything aligned, nothing under the client column) ---------- */
-.work-figure { display: grid; grid-template-columns: 220px minmax(0, 1fr) 170px; column-gap: 2rem; }
-.work-figure > img, .work-figure > .row, .work-figure > figcaption { grid-column: 2 / -1; min-width: 0; }
-@media (max-width: 900px) { .work-figure { display: block; } }
