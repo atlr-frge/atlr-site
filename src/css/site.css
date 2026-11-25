@@ -1064,3 +1064,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ember-glow); ou
   .forge-grid { grid-template-columns: 1fr; gap: 0.5rem; }
   .close-section { padding: 4rem var(--pad-x); }
 }
+
+/* ---------- 24 Nov 2026, late: single-image Work figures fill the column on narrow screens like every other figure ---------- */
+@media (max-width: 900px) { .work-figure img { max-width: 100%; } }
