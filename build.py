@@ -185,7 +185,7 @@ llms = f"""# {ORG_NAME}
 
 > {POSITIONING}
 
-Atelier Superintelligence is a Toronto workshop that builds one agent layer inside a client's own cloud and connects the systems the client already runs to it. The agents hold the client's documents, rules and history as context, draft the work with the evidence attached, and stop to ask when their confidence is low, with the points where people step in designed from the start. Each tool that follows goes onto the same layer, and the client owns it. Founded by Michael Chase (strategy and adoption) and Sean Evans (engineering and production). Method: Forge (Learn, Build, Prove, Stay). Contact: {EMAIL}.
+Atelier Superintelligence is a Toronto workshop that builds a client's Bench: one system at the centre of the client's organisation, inside the client's own cloud, that holds what the organisation knows and learns from every decision its people make, with the systems it already runs plugged into it. Its agents draft the work with the evidence attached and stop to ask when their confidence is low, with the points where people step in designed from the start. Each tool that follows goes onto the same Bench, and the client owns it. Founded by Michael Chase (strategy and adoption) and Sean Evans (engineering and production). Method: Forge (Learn, Build, Prove, Stay). Contact: {EMAIL}.
 
 ## Pages
 - Home: {SITE}/
