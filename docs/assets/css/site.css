@@ -899,6 +899,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ember-glow); ou
 .arch-caption { font-size: 0.9rem; color: var(--text-sec); max-width: 720px; margin: 1.25rem auto 0; text-align: center; line-height: 1.6; }
 .work-group { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ember); padding: 2.4rem 0 0.9rem; border-bottom: 1px solid var(--border); scroll-margin-top: 90px; }
 .work-group:first-child { padding-top: 0.5rem; }
+.work-group-note { font-size: 0.95rem; line-height: 1.65; color: var(--text-sec); max-width: 62ch; padding: 1rem 0 0.2rem; }
 .jump { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.04em; color: var(--text-sec); margin-top: 1.2rem; line-height: 2; }
 .jump a { color: var(--text); border-bottom: 1px solid var(--seam); }
 .jump a:hover { color: var(--ember); border-color: var(--ember); }
